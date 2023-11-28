@@ -1,0 +1,25 @@
+.Pagination {
+    display: flex;
+    margin-top: 20px;
+}
+
+.Pagination button {
+    background-color: rgba(0, 139, 139, 0.2);
+    color: #7c5af6;
+    margin-bottom: 20px;
+    padding: 5px 10px;
+    border: 1px solid darkcyan;
+    border-radius: 10px;
+    transition: all ease 300ms;
+}
+
+.Pagination button:not(:first-child) {
+    margin-left: 10px;
+}
+
+.Pagination button:hover {
+    background-color: darkcyan;
+    color: #ffcc00;
+    cursor: pointer;
+    box-shadow: rgba(180, 252, 115, 0.99) 2px 2px 10px;
+}
