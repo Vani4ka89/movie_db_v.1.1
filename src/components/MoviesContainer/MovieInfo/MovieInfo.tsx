@@ -1,5 +1,5 @@
-import {FC, PropsWithChildren, useEffect} from 'react';
-import {useNavigate} from "react-router-dom";
+import {FC, useEffect} from 'react';
+import {useNavigate, useParams} from "react-router-dom";
 import {Rating} from "@mui/material";
 
 import {useAppDispatch, useAppSelector} from "../../../hooks";
@@ -7,13 +7,12 @@ import {moviesActions} from "../../../store";
 import {Loading} from "../../Loading/Loading";
 import css from './MovieInfo.module.css';
 import {posterBaseUrl} from "../../../constants";
+import {GenreBadgesOfMovie} from "../../BadgesContainer";
 
-interface IProps extends PropsWithChildren {
-    movieId: string;
-}
 
-const MovieInfo: FC<IProps> = ({movieId}) => {
+const MovieInfo: FC = () => {
 
+    const {movieId} = useParams<{ movieId: string }>();
     const dispatch = useAppDispatch();
     const {movie, lightTheme} = useAppSelector(state => state.movies);
     const navigate = useNavigate();
@@ -41,7 +40,7 @@ const MovieInfo: FC<IProps> = ({movieId}) => {
             </div>
             <div className={css.content}>
                 <h1 className={`${lightTheme ? `${css.titleDark}` : `${css.titleLight}`}`}>{original_title}</h1>
-                {/*<GenreBadge/>*/}
+                <GenreBadgesOfMovie/>
                 <p>Rating</p>
                 <div>
                     <Rating
