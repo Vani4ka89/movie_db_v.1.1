@@ -1,0 +1,53 @@
+.navBtnLight {
+    font-size: 18px;
+    border: 1px solid #027296;
+    border-radius: 15px;
+}
+
+.navBtnLight:hover {
+    box-shadow: #4ebd7b 2px 2px 10px;
+    background-color: #f3f3f5;
+}
+
+.navBtnDark {
+    font-size: 18px;
+    border: 1px solid #027296;
+    border-radius: 15px;
+}
+
+.navBtnDark:hover {
+    box-shadow: #4ebd7b 2px 2px 10px;
+    background-color: #05164d;
+}
+
+.logo {
+    display: flex;
+}
+
+.logo img {
+    display: block;
+    border: 1px solid #0ceee6;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    margin-right: 20px;
+}
+
+.themeImg {
+    height: 25px;
+    margin-left: 50px;
+    align-self: center;
+}
+
+.themeImg:hover {
+    cursor: pointer;
+}
+
+.search {
+    color: darkgreen;
+    font-weight: bolder;
+}
+
+.search:hover {
+    box-shadow: #B4FC73FC 2px 2px 10px;
+}

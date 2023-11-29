@@ -1,28 +1,27 @@
 import {FC, useEffect} from 'react';
 import {useSearchParams} from "react-router-dom";
 
-import {BadgesList, MoviesList, Pagination} from "../../components";
-import css from './MoviesPage.module.css';
+import {BadgesList, Pagination, MoviesOfGenre} from "../../components";
+import css from './MoviesOfGenrePage.module.css';
 
-const MoviesPage: FC = () => {
+const MoviesOfGenrePage: FC = () => {
 
     const [query, setQuery] = useSearchParams();
-
     const page = query.get('page');
 
     useEffect(() => {
         if (!page) {
-            setQuery({page: '1'});
+            setQuery({page: '1'})
         }
     }, [page, setQuery]);
 
     return (
-        <div className={css.MoviesPage}>
+        <div className={css.MoviesOfGenrePage}>
             <BadgesList/>
-            <MoviesList/>
+            <MoviesOfGenre/>
             <Pagination/>
         </div>
     );
 };
 
-export {MoviesPage};
+export {MoviesOfGenrePage};

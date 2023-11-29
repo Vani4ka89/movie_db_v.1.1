@@ -1,0 +1,68 @@
+.MovieInfo {
+    height: 100%;
+    width: 100%;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.MovieInfo img {
+    height: 80%;
+    width: 80%;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%;
+    width: 800px;
+    padding-bottom: 30px;
+}
+
+.titleDark {
+    color: #04044f;
+    font-weight: bold;
+    margin-bottom: 30px;
+    font-family: Helvetica sans-serif;
+}
+
+.titleLight {
+    color: snow;
+    font-weight: bold;
+    margin-bottom: 30px;
+    font-family: Helvetica sans-serif;
+}
+
+
+.content p {
+    margin-top: 40px;
+    color: #0a6688;
+}
+
+.content h1, p, h5 {
+    text-align: center;
+}
+
+.content h5 {
+    color: #918f8f;
+    text-align: center;
+}
+
+.btnPlay {
+    margin-top: 20px;
+    padding: 5px 30px;
+    color: #7c5af6;
+    border: 1px solid darkcyan;
+    background-color: rgba(0, 139, 139, 0.2);
+    border-radius: 20px 20px;
+    transition: all ease 300ms;
+}
+
+.btnPlay:hover {
+    background-color: #b20606;
+    color: snow;
+    box-shadow: #4ebd7b 2px 2px 10px;
+}

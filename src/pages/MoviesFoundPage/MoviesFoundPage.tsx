@@ -1,13 +1,12 @@
 import {FC, useEffect} from 'react';
 import {useSearchParams} from "react-router-dom";
 
-import {BadgesList, MoviesList, Pagination} from "../../components";
-import css from './MoviesPage.module.css';
+import {BadgesList, MoviesFound, Pagination} from "../../components";
+import css from './MoviesFoundPage.module.css';
 
-const MoviesPage: FC = () => {
+const MoviesFoundPage: FC = () => {
 
     const [query, setQuery] = useSearchParams();
-
     const page = query.get('page');
 
     useEffect(() => {
@@ -17,12 +16,12 @@ const MoviesPage: FC = () => {
     }, [page, setQuery]);
 
     return (
-        <div className={css.MoviesPage}>
+        <div className={css.MoviesFoundPage}>
             <BadgesList/>
-            <MoviesList/>
+            <MoviesFound/>
             <Pagination/>
         </div>
     );
 };
 
-export {MoviesPage};
+export {MoviesFoundPage};

@@ -1,0 +1,31 @@
+.FooterDark {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: lightgray;
+    flex-direction: column;
+    background-color: black;
+}
+
+.FooterLight {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #04044f;
+    flex-direction: column;
+    background-color: lightgrey;
+}
+
+.content {
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content img {
+    height: 10px;
+    margin-right: 10px;
+}

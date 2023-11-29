@@ -5,21 +5,23 @@ import {useNavigate} from "react-router-dom";
 import {IMovie} from "../../../interfaces";
 import {posterBaseUrl} from "../../../constants";
 import css from './MoviesListCard.module.css';
-import {useAppSelector} from "../../../hooks";
+import {useAppDispatch, useAppSelector} from "../../../hooks";
+import {moviesActions} from "../../../store";
 
 interface IProps extends PropsWithChildren {
-    movie: IMovie
+    movie: IMovie;
 }
 
 const MoviesListCard: FC<IProps> = ({movie}) => {
     const {id, title, backdrop_path, poster_path, vote_average, release_date} = movie;
 
     const {lightTheme} = useAppSelector(state => state.movies);
+    const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
     const getMovieInfo = () => {
         navigate(`/movies/${id}`);
-        // setSearchTerm('');
+        dispatch(moviesActions.setSearchTerm(''));
     };
 
     return (
