@@ -1,12 +1,13 @@
 import {createAsyncThunk, createSlice, isFulfilled, isRejected} from "@reduxjs/toolkit";
 import {AxiosError} from "axios";
 
-import {IMovie, IPagination} from "../../interfaces";
+import {IMovie, IPagination, IVideo, IVideoPagination} from "../../interfaces";
 import {moviesService} from "../../services";
 
 interface IState {
     movie: IMovie;
     movies: IMovie[];
+    videos: IVideo[];
     lightTheme: boolean;
     searchTerm: string | number;
     error: boolean;
@@ -15,6 +16,7 @@ interface IState {
 let initialState: IState = {
     movie: null,
     movies: [],
+    videos: [],
     lightTheme: false,
     searchTerm: null,
     error: null
@@ -72,6 +74,20 @@ const getFound = createAsyncThunk<IPagination<IMovie>, { searchTerm: string | nu
     }
 );
 
+const getVideo = createAsyncThunk<IVideoPagination<IVideo>, { movieId: number }>(
+    'moviesSlice/getVideo',
+    async ({movieId}, {rejectWithValue}) => {
+        try {
+            const {data} = await moviesService.getVideo(movieId);
+            return data;
+        } catch (e) {
+            const err = e as AxiosError;
+            return rejectWithValue(err.response?.data);
+        }
+    }
+);
+
+
 const moviesSlice = createSlice({
     name: 'moviesSlice',
     initialState,
@@ -101,11 +117,15 @@ const moviesSlice = createSlice({
                 state.movies = action.payload.results;
             })
 
-            .addMatcher(isFulfilled(getAll, getById, getOfGenre, getFound), state => {
+            .addCase(getVideo.fulfilled, (state, action) => {
+                state.videos = action.payload.results;
+            })
+
+            .addMatcher(isFulfilled(getAll, getById, getOfGenre, getFound, getVideo), state => {
                 state.error = null;
             })
 
-            .addMatcher(isRejected(getAll, getById, getOfGenre, getFound), state => {
+            .addMatcher(isRejected(getAll, getById, getOfGenre, getFound, getVideo), state => {
                 state.error = true;
             })
 });
@@ -117,7 +137,8 @@ const moviesActions = {
     getAll,
     getById,
     getOfGenre,
-    getFound
+    getFound,
+    getVideo
 };
 
 export {
