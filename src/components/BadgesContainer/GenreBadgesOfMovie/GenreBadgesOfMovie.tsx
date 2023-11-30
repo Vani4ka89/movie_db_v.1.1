@@ -24,6 +24,7 @@ const GenreBadgesOfMovie = () => {
 
     const getGenreMovies = (genreId: number) => {
         navigate(`/movies/genre/${genreId}`);
+        dispatch(moviesActions.setSearchTerm(''));
     };
 
     return (
