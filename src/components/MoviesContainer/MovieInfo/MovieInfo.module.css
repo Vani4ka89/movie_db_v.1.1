@@ -30,7 +30,7 @@
 }
 
 .titleLight {
-    color: snow;
+    color: #a4a3a3;
     font-weight: bold;
     margin-bottom: 30px;
     font-family: Helvetica sans-serif;
@@ -54,7 +54,7 @@
 .btnPlay {
     margin-top: 20px;
     padding: 5px 30px;
-    color: #7c5af6;
+    color: #918f8f;
     border: 1px solid darkcyan;
     background-color: rgba(0, 139, 139, 0.2);
     border-radius: 20px 20px;
@@ -64,5 +64,5 @@
 .btnPlay:hover {
     background-color: #b20606;
     color: snow;
-    box-shadow: #4ebd7b 2px 2px 10px;
+    box-shadow: #ee5316 2px 2px 10px;
 }

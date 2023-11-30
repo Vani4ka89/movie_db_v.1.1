@@ -5,7 +5,7 @@
     align-items: center;
     color: lightgray;
     flex-direction: column;
-    background-color: black;
+    background-color: rgba(4, 117, 117, 0.2);
 }
 
 .FooterLight {

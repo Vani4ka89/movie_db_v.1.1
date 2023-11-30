@@ -49,6 +49,7 @@ const MovieInfo: FC = () => {
                         readOnly max={10}
                         precision={0.1}
                         size='large'
+                        style={{color:'#ee5316'}}
                     />
                 </div>
                 <p>Overview</p>

@@ -39,7 +39,7 @@ const MoviesListCard: FC<IProps> = ({movie}) => {
                                 max={10}
                                 precision={0.5}
                                 size='small'
-                                style={{color: '#50cdf5', fontSize: '17px'}}
+                                style={{color: '#ee5316', fontSize: '17px'}}
                             />
                         </div>
                         <div

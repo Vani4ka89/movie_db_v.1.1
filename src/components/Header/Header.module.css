@@ -11,13 +11,13 @@
 
 .navBtnDark {
     font-size: 18px;
-    border: 1px solid #027296;
+    border: 1px solid #013f3d;
     border-radius: 15px;
 }
 
 .navBtnDark:hover {
-    box-shadow: #4ebd7b 2px 2px 10px;
-    background-color: #05164d;
+    box-shadow: #ee5316 2px 2px 10px;
+    background-color: #6c0404;
 }
 
 .logo {
@@ -49,5 +49,5 @@
 }
 
 .search:hover {
-    box-shadow: #B4FC73FC 2px 2px 10px;
+    box-shadow: #b20606 2px 2px 10px;
 }

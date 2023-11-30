@@ -23,7 +23,7 @@
     justify-content: space-between;
     align-items: center;
     background-color: #00000a;
-    border: 3px solid #032b53;
+    border: 3px solid #013f3d;
     border-radius: 20px;
     transition: all ease 300ms;
 }
@@ -31,7 +31,7 @@
 
 .MoviesListCardDark:hover {
     cursor: pointer;
-    box-shadow: rgba(180, 252, 115, 0.99) 0 8px 30px;
+    box-shadow: rgb(248, 10, 10) 0 8px 30px;
     transform: scale(1.05) translate(5px, -10px);
 }
 
@@ -43,7 +43,7 @@
 
 .imageBlock {
     width: 100%;
-    height: 77%;
+    height: 85%;
     border-radius: 16px 16px 0 0;
 }
 
@@ -58,17 +58,19 @@
 .titleLight {
     font-size: 15px;
     font-weight: bold;
-    padding: 0 5px;
+    padding: 5px;
     text-align: center;
-    color: snow;
+    color: #a4a3a3;
+    overflow: scroll;
 }
 
 .titleDark {
     font-size: 15px;
     font-weight: bold;
-    padding: 0 5px;
+    padding: 5px;
     text-align: center;
     color: #050550;
+    overflow: scroll;
 }
 
 .additionalData {
@@ -81,7 +83,7 @@
 
 .yearLight {
     font-size: 14px;
-    color: snow;
+    color: #918f8f;
 }
 
 .yearDark {

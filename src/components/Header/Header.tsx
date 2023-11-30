@@ -33,7 +33,7 @@ const Header: FC = () => {
     };
 
     return (
-        <nav className={`navbar navbar-expand-lg ${lightTheme ? 'bg-dark-subtle' : 'bg-black'}`} style={{
+        <nav className={`navbar navbar-expand-lg ${lightTheme ? 'bg-dark-subtle' : 'bg-gradient'}`} style={{
             position: 'sticky',
             top: '0',
             zIndex: '9',
@@ -71,7 +71,7 @@ const Header: FC = () => {
                             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdxOqXuRWoYenOK3CKWtqYmth9K_EaQ5FmoA&usqp=CAU"
                             alt="logo"/>
                         <form className="d-flex" role="search">
-                            <input className={`form-control me-2 ${css.search}`} type="search" placeholder="Search"
+                            <input className={`form-control bg-dark-subtle bg-light me-2 ${css.search}`} type="search" placeholder="Search"
                                    aria-label="Search"
                                    value={searchTerm}
                                    onChange={searchMovies}/>
