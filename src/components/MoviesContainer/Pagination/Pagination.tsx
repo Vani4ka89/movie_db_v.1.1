@@ -2,9 +2,11 @@ import React, {FC} from 'react';
 import {useSearchParams} from "react-router-dom";
 
 import css from './Pagination.module.css';
+import {useAppSelector} from "../../../hooks";
 
 const Pagination: FC = () => {
 
+    const {lightTheme} = useAppSelector(state => state.movies);
     const [query, setQuery] = useSearchParams();
     const page = +query.get('page') ? +query.get('page') : 1;
 
@@ -30,7 +32,7 @@ const Pagination: FC = () => {
     };
 
     return (
-        <div className={css.Pagination}>
+        <div className={`${lightTheme ? `${css.PaginationLight}` : `${css.PaginationDark}`}`}>
             <button style={{display: page <= 1 ? "none" : "block"}}
                     onClick={prevPage}>
                 prev

@@ -8,7 +8,7 @@ import {moviesActions} from "../../../store";
 
 const GenreBadgesOfMovie = () => {
     const {movieId} = useParams<{ movieId: string }>();
-    const {movie} = useAppSelector(state => state.movies);
+    const {movie, lightTheme} = useAppSelector(state => state.movies);
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
@@ -28,7 +28,7 @@ const GenreBadgesOfMovie = () => {
     };
 
     return (
-        <div className={css.GenreBadgesOfMovie}>
+        <div className={`${lightTheme ? `${css.GenreBadgesOfMovieLight}` : `${css.GenreBadgesOfMovieDark}`}`}>
             {genres.map(genre => <button onClick={() => getGenreMovies(genre.id)}>{genre.name}</button>)}
         </div>
     );

@@ -71,10 +71,12 @@ const Header: FC = () => {
                             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdxOqXuRWoYenOK3CKWtqYmth9K_EaQ5FmoA&usqp=CAU"
                             alt="logo"/>
                         <form className="d-flex" role="search">
-                            <input className={`form-control bg-dark-subtle bg-light me-2 ${css.search}`} type="search" placeholder="Search"
-                                   aria-label="Search"
-                                   value={searchTerm}
-                                   onChange={searchMovies}/>
+                            <input
+                                className={`form-control bg-dark-subtle bg-light me-2 ${lightTheme ? `${css.searchLight}` : `${css.searchDark}`}`}
+                                type="search" placeholder="Search"
+                                aria-label="Search"
+                                value={searchTerm}
+                                onChange={searchMovies}/>
                             {/*<button className="btn btn-outline-success" type="submit" onClick={movieSearch}>Search*/}
                             {/*</button>*/}
                         </form>

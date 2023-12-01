@@ -31,13 +31,13 @@
 
 .MoviesListCardDark:hover {
     cursor: pointer;
-    box-shadow: rgb(248, 10, 10) 0 8px 30px;
+    box-shadow: rgb(248, 189, 3) 0 8px 30px;
     transform: scale(1.05) translate(5px, -10px);
 }
 
 .MoviesListCardLight:hover {
     cursor: pointer;
-    box-shadow: rgb(2, 2, 65) 0 8px 40px;
+    box-shadow: #020241 0 8px 40px;
     transform: scale(1.05) translate(5px, -10px);
 }
 

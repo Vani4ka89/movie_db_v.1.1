@@ -3,7 +3,7 @@ import {useNavigate} from "react-router-dom";
 
 import {IGenreBadge} from "../../../interfaces";
 import css from './Badge.module.css';
-import {useAppDispatch} from "../../../hooks";
+import {useAppDispatch, useAppSelector} from "../../../hooks";
 import {moviesActions} from "../../../store";
 
 
@@ -14,6 +14,7 @@ interface IProps extends PropsWithChildren {
 const Badge: FC<IProps> = ({badge}) => {
     const {id, name} = badge;
     const navigate = useNavigate();
+    const {lightTheme} = useAppSelector(state => state.movies);
     const dispatch = useAppDispatch();
 
     const getGenreMovies = () => {
@@ -22,7 +23,7 @@ const Badge: FC<IProps> = ({badge}) => {
     };
 
     return (
-        <div key={id} className={css.btnBox}>
+        <div key={id} className={`${lightTheme ? `${css.btnBoxLight}` : `${css.btnBoxDark}`}`}>
             <button onClick={getGenreMovies}>{name}</button>
         </div>
     );
