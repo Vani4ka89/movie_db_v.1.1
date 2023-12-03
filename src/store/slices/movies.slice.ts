@@ -17,7 +17,7 @@ let initialState: IState = {
     movie: null,
     movies: [],
     videos: [],
-    lightTheme: false,
+    lightTheme: true,
     searchTerm: null,
     error: null
 };
