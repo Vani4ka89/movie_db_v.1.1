@@ -22,7 +22,6 @@ const MovieInfo: FC<IProps> = ({movie}) => {
         navigate(`/movies/${id}/video`);
     };
 
-    console.log(movie);
     return (
         <div className={css.MovieInfo}>
             <div>
