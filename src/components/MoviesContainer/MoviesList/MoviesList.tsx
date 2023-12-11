@@ -5,6 +5,7 @@ import {MoviesListCard} from "../MoviesListCard/MoviesListCard";
 import {useAppDispatch, useAppSelector} from "../../../hooks";
 import {moviesActions} from "../../../store";
 import css from './MoviesList.module.css';
+import {Loading} from "../../Loading/Loading";
 
 const MoviesList: FC = () => {
     const {movies} = useAppSelector(state => state.movies);
@@ -19,7 +20,7 @@ const MoviesList: FC = () => {
 
     return (
         <div className={css.MoviesList}>
-            {movies.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)}
+            {movies ? movies.map(movie => <MoviesListCard key={movie.id} movie={movie}/>) : <Loading/>}
         </div>
     );
 };
