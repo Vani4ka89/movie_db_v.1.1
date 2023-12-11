@@ -1,38 +1,28 @@
-import {FC, useEffect} from 'react';
-import {useNavigate, useParams} from "react-router-dom";
+import {FC} from 'react';
+import {useNavigate} from "react-router-dom";
 import {Rating} from "@mui/material";
 
-import {useAppDispatch, useAppSelector} from "../../../hooks";
-import {moviesActions} from "../../../store";
-import {Loading} from "../../Loading/Loading";
+import {useAppSelector} from "../../../hooks";
 import css from './MovieInfo.module.css';
 import {posterBaseUrl} from "../../../constants";
 import {GenreBadgesOfMovie} from "../../BadgesContainer";
+import {IMovie} from "../../../interfaces";
 
+interface IProps {
+    movie: IMovie;
+}
 
-const MovieInfo: FC = () => {
-
-    const {movieId} = useParams<{ movieId: string }>();
-    const dispatch = useAppDispatch();
-    const {movie, lightTheme} = useAppSelector(state => state.movies);
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        if (movieId) {
-            dispatch(moviesActions.getById({movieId: +movieId}));
-        }
-    }, [dispatch, movieId]);
-
-    if (!movie) {
-        return <Loading/>
-    }
-
+const MovieInfo: FC<IProps> = ({movie}) => {
     const {id, poster_path, title, original_title, vote_average, overview} = movie;
+
+    const lightTheme = useAppSelector(state => state.movies.lightTheme);
+    const navigate = useNavigate();
 
     const getMovieVideos = () => {
         navigate(`/movies/${id}/video`);
     };
 
+    console.log(movie);
     return (
         <div className={css.MovieInfo}>
             <div>
@@ -49,7 +39,7 @@ const MovieInfo: FC = () => {
                         readOnly max={10}
                         precision={0.1}
                         size='large'
-                        style={{color:'#ee5316'}}
+                        style={{color: '#ee5316'}}
                     />
                 </div>
                 <p>Overview</p>

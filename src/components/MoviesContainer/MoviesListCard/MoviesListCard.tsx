@@ -18,7 +18,7 @@ const MoviesListCard: FC<IProps> = ({movie}) => {
     const navigate = useNavigate();
 
     const getMovieInfo = () => {
-        navigate(`/movies/${id}`);
+        navigate(`/movies/${id}`, {state: {...movie}});
     };
 
     return (
