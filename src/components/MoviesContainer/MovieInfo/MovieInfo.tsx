@@ -33,6 +33,7 @@ const MovieInfo: FC<IProps> = ({movie}) => {
                 <p>Rating</p>
                 <div>
                     <Rating
+                        className={css.rating}
                         name="read-only"
                         defaultValue={vote_average}
                         readOnly max={10}

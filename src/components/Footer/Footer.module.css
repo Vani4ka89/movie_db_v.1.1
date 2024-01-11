@@ -29,3 +29,17 @@
     height: 10px;
     margin-right: 10px;
 }
+
+/**********************************************Media**********************************************/
+
+@media screen and (max-width: 430px) {
+    .content {
+        font-size: 7px;
+        justify-content: space-between;
+    }
+
+    .content img {
+        height: 7px;
+        /*margin-right: 10px;*/
+    }
+}

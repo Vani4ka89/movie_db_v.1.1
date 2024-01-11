@@ -54,7 +54,9 @@
     margin-left: 10px;
 }
 
-@media screen and (max-width: 425px) {
+/***********************************************Media*****************************************/
+
+@media screen and (max-width: 430px) {
     .PaginationLight {
         margin-top: 10px;
     }
@@ -64,17 +66,24 @@
     }
 
     .PaginationLight button {
-        color: #030344;
-        background-color: rgba(4, 169, 169, 0.2);
-        margin-bottom: 10px;
-        padding: 3px 5px;
-        border: 1px solid #310202;
-        border-radius: 10px;
+        margin-bottom: 5px;
+        padding: 0 5px;
         transition: all ease 300ms;
-        font-size: 10px;
+        font-size: 12px;
     }
 
     .PaginationLight button:not(:first-child) {
+        margin-left: 5px;
+    }
+
+    .PaginationDark button {
+        margin-bottom: 5px;
+        padding: 0 5px;
+        transition: all ease 300ms;
+        font-size: 12px;
+    }
+
+    .PaginationDark button:not(:first-child) {
         margin-left: 5px;
     }
 }

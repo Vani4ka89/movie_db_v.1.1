@@ -1,12 +1,12 @@
 .MoviesList {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-wrap: wrap;
     padding: 0 10px;
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 430px) {
     .MoviesList {
-        padding: 0 7px;
+        padding: 0 7px ;
     }
 }

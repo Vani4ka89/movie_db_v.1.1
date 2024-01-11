@@ -67,6 +67,34 @@
     box-shadow: #ee5316 2px 2px 10px;
 }
 
-@media screen and (min-width: 425px)and (max-width: 768px){
+/****************************************************Media*******************************************/
 
+@media screen and (max-width: 430px) {
+    .MovieInfo {
+        padding: 10px;
+    }
+
+    .MovieInfo img {
+        display: none
+    }
+
+    .content {
+        padding-bottom: 5px;
+    }
+
+    .content p {
+        margin-top: 15px;
+    }
+
+    .titleDark {
+        margin-bottom: 50px;
+    }
+
+    .titleLight {
+        margin-bottom: 50px;
+    }
+
+    .btnPlay {
+        margin-top: 50px;
+    }
 }
