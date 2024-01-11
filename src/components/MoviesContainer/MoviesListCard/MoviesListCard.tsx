@@ -32,7 +32,7 @@ const MoviesListCard: FC<IProps> = ({movie}) => {
                     <h5 className={`${lightTheme ? `${css.titleDark}` : `${css.titleLight}`}`}>{title}</h5>
                     <div className={css.additionalData}>
                         <div>
-                            <Rating
+                            <Rating className={css.rating}
                                 name="read-only"
                                 defaultValue={vote_average}
                                 readOnly

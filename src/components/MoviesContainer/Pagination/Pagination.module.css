@@ -53,3 +53,28 @@
 .PaginationDark button:not(:first-child) {
     margin-left: 10px;
 }
+
+@media screen and (max-width: 425px) {
+    .PaginationLight {
+        margin-top: 10px;
+    }
+
+    .PaginationDark {
+        margin-top: 10px;
+    }
+
+    .PaginationLight button {
+        color: #030344;
+        background-color: rgba(4, 169, 169, 0.2);
+        margin-bottom: 10px;
+        padding: 3px 5px;
+        border: 1px solid #310202;
+        border-radius: 10px;
+        transition: all ease 300ms;
+        font-size: 10px;
+    }
+
+    .PaginationLight button:not(:first-child) {
+        margin-left: 5px;
+    }
+}

@@ -35,3 +35,23 @@
     cursor: pointer;
     box-shadow: #ffcc00 2px 2px 10px;
 }
+
+@media screen and (max-width: 425px) {
+    .GenreBadgesOfMovieLight button {
+        font-size: 10px;
+        margin: 5px;
+        color: #030344;
+        background-color: rgba(4, 169, 169, 0.2);
+        display: inline-block;
+        padding: 0 10px;
+        border: 1px solid #310202;
+        border-radius: 10px;
+        transition: all ease 300ms;
+    }
+
+    .GenreBadgesOfMovieDark button {
+        font-size: 10px;
+        margin: 5px;
+        padding: 0 5px;
+    }
+}
