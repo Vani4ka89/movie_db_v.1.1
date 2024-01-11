@@ -150,3 +150,61 @@
         display: none;
     }
 }
+
+@media screen and (min-width: 431px) and (max-width: 768px) {
+    .MoviesListCardLight {
+        height: 250px;
+        width: 142px;
+        margin: 3px 0;
+        padding-bottom: 0;
+        border-radius: 15px;
+        justify-content: flex-start;
+    }
+
+    .MoviesListCardDark {
+        height: 250px;
+        width: 142px;
+        margin: 3px 0;
+        padding-bottom: 0;
+        border-radius: 15px;
+        justify-content: flex-start;
+    }
+
+    .imageBlock {
+        width: 100%;
+        height: 85%;
+        border-radius: 15px 15px 0 0;
+    }
+
+    .imageBlock img {
+        border-radius: 14px 14px 0 0;
+    }
+
+    .titleLight {
+        font-size: 12px;
+        font-weight: bold;
+        text-align: center;
+        color: #a4a3a3;
+        overflow: scroll;
+    }
+
+    .titleDark {
+        font-size: 12px;
+        font-weight: bold;
+        text-align: center;
+        color: #050550;
+        overflow: scroll;
+    }
+
+    .additionalData {
+        display: none;
+    }
+
+    .yearLight {
+        display: none;
+    }
+
+    .yearDark {
+        display: none;
+    }
+}

@@ -98,3 +98,33 @@
         margin-top: 50px;
     }
 }
+
+@media screen and (min-width: 431px) and (max-width: 768px) {
+    .MovieInfo {
+        padding: 10px;
+    }
+
+    .MovieInfo img {
+        width: 300px;
+    }
+
+    .content {
+        padding-bottom: 5px;
+    }
+
+    .content p {
+        margin-top: 15px;
+    }
+
+    .titleDark {
+        margin-bottom: 50px;
+    }
+
+    .titleLight {
+        margin-bottom: 50px;
+    }
+
+    .btnPlay {
+        margin-top: 50px;
+    }
+}
