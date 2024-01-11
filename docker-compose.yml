@@ -1,0 +1,12 @@
+version: 4.1.2
+
+services:
+
+  web:
+    image: nginx:alpine
+    ports:
+      - '80:80'
+    volumes:
+      - ./client:/usr/share/nginx/html
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    restart: on-failure
