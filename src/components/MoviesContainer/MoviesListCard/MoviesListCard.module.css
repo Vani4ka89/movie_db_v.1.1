@@ -208,3 +208,53 @@
         display: none;
     }
 }
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+    .MoviesListCardLight {
+        height: 440px;
+        width: 235px;
+        margin: 3px 0;
+        padding-bottom: 0;
+        border-radius: 15px;
+        justify-content: space-around;
+    }
+
+    .MoviesListCardDark {
+        height: 440px;
+        width: 235px;
+        margin: 3px 0;
+        padding-bottom: 0;
+        border-radius: 15px;
+        justify-content: space-around;
+    }
+
+    .imageBlock {
+        width: 100%;
+        height: 85%;
+        border-radius: 15px 15px 0 0;
+    }
+
+    .imageBlock img {
+        border-radius: 14px 14px 0 0;
+    }
+
+    .titleLight {
+        font-size: 20px;
+    }
+
+    .titleDark {
+        font-size: 20px;
+    }
+
+    .additionalData {
+        display: none;
+    }
+
+    .yearLight {
+        display: none;
+    }
+
+    .yearDark {
+        display: none;
+    }
+}

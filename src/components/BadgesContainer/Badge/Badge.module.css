@@ -69,3 +69,19 @@
         border: 1px solid #310202;
     }
 }
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+    .btnBoxLight button{
+        font-size: 21px;
+        margin: 3px;
+        padding: 0 3px;
+        border: 1px solid #310202;
+    }
+
+    .btnBoxDark button{
+        font-size: 21px;
+        margin: 3px;
+        padding: 0 3px;
+        border: 1px solid #310202;
+    }
+}

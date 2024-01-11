@@ -119,3 +119,35 @@
         margin-left: 5px;
     }
 }
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+    .PaginationLight {
+        margin-top: 10px;
+    }
+
+    .PaginationDark {
+        margin-top: 10px;
+    }
+
+    .PaginationLight button {
+        /*margin-bottom: 5px;*/
+        /*padding: 0 5px;*/
+        /*transition: all ease 300ms;*/
+        font-size: 21px;
+    }
+
+    .PaginationLight button:not(:first-child) {
+        margin-left: 10px;
+    }
+
+    .PaginationDark button {
+        /*margin-bottom: 5px;*/
+        /*padding: 0 5px;*/
+        /*transition: all ease 300ms;*/
+        font-size: 21px;
+    }
+
+    .PaginationDark button:not(:first-child) {
+        margin-left: 10px;
+    }
+}
