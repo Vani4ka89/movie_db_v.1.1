@@ -1,5 +1,5 @@
 body {
-    min-width: 1200px;
+    min-width: 1440px;
 }
 
 .MainLayoutDark {
@@ -10,7 +10,7 @@ body {
     justify-content: space-between;
     background-color: black;
     margin: 0 auto;
-    width: 1200px;
+    width: 1440px;
     padding: 0 15px;
 }
 
@@ -22,6 +22,6 @@ body {
     justify-content: space-between;
     background-color: #b3e3f5;
     margin: 0 auto;
-    width: 1200px;
+    width: 1440px;
     padding: 0 15px;
 }
