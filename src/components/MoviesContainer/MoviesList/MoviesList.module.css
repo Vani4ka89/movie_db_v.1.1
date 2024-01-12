@@ -4,3 +4,11 @@
     flex-wrap: wrap;
     padding: 0 10px;
 }
+
+/**************************************Media***********************************/
+
+@media (max-width: 480px) {
+    .MoviesList {
+        justify-content: space-around;
+    }
+}

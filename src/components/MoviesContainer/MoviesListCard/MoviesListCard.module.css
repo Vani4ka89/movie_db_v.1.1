@@ -92,3 +92,33 @@
 }
 
 /******************************************Media*********************************************/
+
+@media (max-width: 768px) {
+    .MoviesListCardLight {
+        width: 310px;
+    }
+
+    .MoviesListCardDark {
+        width: 310px;
+    }
+}
+
+@media (max-width: 480px) {
+    .MoviesListCardLight {
+        width: 600px;
+        height: 950px;
+    }
+
+    .MoviesListCardDark {
+        width: 600px;
+        height: 950px;
+    }
+
+    .titleLight {
+        font-size: 30px;
+    }
+
+    .titleDark {
+        font-size: 30px;
+    }
+}
