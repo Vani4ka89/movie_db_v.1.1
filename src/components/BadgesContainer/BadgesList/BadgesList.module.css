@@ -5,10 +5,3 @@
     padding: 10px 0;
     margin-bottom: 20px;
 }
-
-@media screen and (max-width: 430px) {
-    .BadgesList {
-        padding: 0 5px;
-        margin-bottom: 10px;
-    }
-}

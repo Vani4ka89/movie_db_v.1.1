@@ -4,9 +4,3 @@
     flex-wrap: wrap;
     padding: 0 10px;
 }
-
-@media screen and (max-width: 430px) {
-    .MoviesList {
-        padding: 0 7px ;
-    }
-}
