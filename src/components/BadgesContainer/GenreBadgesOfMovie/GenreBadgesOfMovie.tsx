@@ -29,7 +29,7 @@ const GenreBadgesOfMovie = () => {
 
     return (
         <div className={`${lightTheme ? `${css.GenreBadgesOfMovieLight}` : `${css.GenreBadgesOfMovieDark}`}`}>
-            {genres.map(genre => <button onClick={() => getGenreMovies(genre.id)}>{genre.name}</button>)}
+            {genres.map(genre => <button key={genre.id} onClick={() => getGenreMovies(genre.id)}>{genre.name}</button>)}
         </div>
     );
 };

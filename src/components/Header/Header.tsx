@@ -75,7 +75,7 @@ const Header: FC = () => {
                                 className={`form-control bg-dark-subtle bg-light me-2 ${lightTheme ? `${css.searchLight}` : `${css.searchDark}`}`}
                                 type="search" placeholder="Search"
                                 aria-label="Search"
-                                value={searchTerm}
+                                value={searchTerm || ''}
                                 onChange={searchMovies}/>
                             {/*<button className="btn btn-outline-success" type="submit" onClick={movieSearch}>Search*/}
                             {/*</button>*/}
