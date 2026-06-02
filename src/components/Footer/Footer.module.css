@@ -1,33 +1,49 @@
 .FooterDark {
-    height: 50px;
+    min-height: 58px;
+    padding: 12px clamp(14px, 4vw, 32px);
     display: flex;
     justify-content: center;
     align-items: center;
-    color: lightgray;
-    flex-direction: column;
-    background-color: rgba(4, 117, 117, 0.2);
+    color: #cbd5e1;
+    background-color: rgba(8, 13, 24, 0.94);
+    border-top: 1px solid rgba(45, 212, 191, 0.18);
 }
 
 .FooterLight {
-    height: 50px;
+    min-height: 58px;
+    padding: 12px clamp(14px, 4vw, 32px);
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #04044f;
-    flex-direction: column;
-    background-color: lightgrey;
+    color: #475569;
+    background-color: rgba(248, 250, 252, 0.94);
+    border-top: 1px solid rgba(148, 163, 184, 0.22);
 }
 
 .content {
-    font-size: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 10px;
+    max-width: 900px;
+    font-size: 12px;
+    line-height: 1.45;
+    text-align: center;
 }
 
 .content img {
-    height: 10px;
-    margin-right: 10px;
+    flex: 0 0 auto;
+    width: 86px;
+    height: auto;
 }
 
 /**********************************************Media**********************************************/
+
+@media (max-width: 480px) {
+    .content {
+        align-items: center;
+        flex-direction: column;
+        gap: 6px;
+        font-size: 11px;
+    }
+}

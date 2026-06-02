@@ -1,39 +1,56 @@
-.btnBoxLight button{
-    font-size: 18px;
-    margin: 10px;
-    color: #030344;
-    background-color: rgba(4, 169, 169, 0.2);
-    display: inline-block;
-    padding: 0 10px;
-    border: 1px solid #310202;
-    border-radius: 10px;
-    transition: all ease 300ms;
+.btnBoxLight,
+.btnBoxDark {
+    flex: 0 0 auto;
+}
+
+.btnBoxLight button,
+.btnBoxDark button {
+    min-height: 36px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 700;
+    white-space: nowrap;
+    transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.btnBoxLight button {
+    color: #0f766e;
+    background-color: rgba(255, 255, 255, 0.82);
+    border: 1px solid rgba(13, 148, 136, 0.24);
 }
 
 .btnBoxLight button:hover {
-    background-color: #1ab5ee;
-    color: #ffffff;
+    color: #0f172a;
+    background-color: #ccfbf1;
+    border-color: rgba(13, 148, 136, 0.52);
     cursor: pointer;
-    box-shadow: rgb(4, 4, 79) 2px 2px 10px;
+    box-shadow: 0 8px 20px rgba(13, 148, 136, 0.14);
+    transform: translateY(-1px);
 }
 
-.btnBoxDark button{
-    font-size: 18px;
-    margin: 10px;
-    color: #ee5316;
-    background-color: rgba(4, 169, 169, 0.2);
-    display: inline-block;
-    padding: 0 10px;
-    border: 1px solid #310202;
-    border-radius: 10px;
-    transition: all ease 300ms;
+.btnBoxDark button {
+    color: #fef3c7;
+    background-color: rgba(15, 23, 42, 0.78);
+    border: 1px solid rgba(251, 191, 36, 0.24);
 }
 
 .btnBoxDark button:hover {
-    background-color: #7e0404;
-    color: #ffcc00;
+    color: #67e8f9;
+    background-color: rgba(20, 184, 166, 0.18);
+    border-color: rgba(45, 212, 191, 0.45);
     cursor: pointer;
-    box-shadow: rgb(246, 221, 94) 2px 2px 10px;
+    box-shadow: 0 8px 20px rgba(45, 212, 191, 0.12);
+    transform: translateY(-1px);
 }
 
 /************************************************Media*****************************************/
+
+@media (max-width: 480px) {
+    .btnBoxLight button,
+    .btnBoxDark button {
+        min-height: 34px;
+        padding: 5px 10px;
+        font-size: 13px;
+    }
+}

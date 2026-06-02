@@ -24,14 +24,14 @@ const MovieInfo: FC<IProps> = ({movie}) => {
 
     return (
         <div className={css.MovieInfo}>
-            <div>
+            <div className={css.posterPanel}>
                 <img src={`${posterBaseUrl}${poster_path}`} alt={title}/>
             </div>
-            <div className={css.content}>
-                <h1 className={`${lightTheme ? `${css.titleDark}` : `${css.titleLight}`}`}>{original_title}</h1>
+            <div className={`${css.content} ${lightTheme ? css.contentLight : css.contentDark}`}>
+                <h1 className={`${lightTheme ? `${css.titleDark}` : `${css.titleLight}`}`}>{original_title || title}</h1>
                 <GenreBadgesOfMovie/>
-                <p>Rating</p>
-                <div>
+                <p className={css.sectionLabel}>Rating</p>
+                <div className={css.ratingBlock}>
                     <Rating
                         className={css.rating}
                         name="read-only"
@@ -39,12 +39,12 @@ const MovieInfo: FC<IProps> = ({movie}) => {
                         readOnly max={10}
                         precision={0.1}
                         size='large'
-                        style={{color: '#ee5316'}}
+                        style={{color: '#f59e0b'}}
                     />
                 </div>
-                <p>Overview</p>
+                <p className={css.sectionLabel}>Overview</p>
                 <h5>{overview}</h5>
-                <button className={css.btnPlay} onClick={getMovieVideos}>PLAY</button>
+                <button className={css.btnPlay} onClick={getMovieVideos}>Play trailer</button>
             </div>
         </div>
     );

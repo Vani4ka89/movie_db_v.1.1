@@ -4,6 +4,7 @@ import {useParams} from "react-router-dom";
 import {Video} from "../Video/Video";
 import {useAppDispatch, useAppSelector} from "../../../hooks";
 import {moviesActions} from "../../../store";
+import css from './MovieVideo.module.css';
 
 const MovieVideo: FC = () => {
     const {movieId} = useParams<{ movieId: string }>();
@@ -16,7 +17,7 @@ const MovieVideo: FC = () => {
     }, [movieId, dispatch]);
 
     return (
-        <div>
+        <div className={css.MovieVideo}>
             {trailers && trailers.map(trailer => <Video key={trailer.id} trailer={trailer}/>)}
         </div>
     );

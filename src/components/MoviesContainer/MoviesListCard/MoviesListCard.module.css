@@ -1,124 +1,168 @@
 .MoviesListCardLight {
-    height: 460px;
-    width: 250px;
-    margin: 20px 10px;
-    padding-bottom: 5px;
+    width: 100%;
+    max-width: 238px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    background-color: #eae8e8;
-    border: 3px solid #032b53;
-    border-radius: 20px;
-    transition: all ease 300ms;
+    overflow: hidden;
+    background-color: #ffffff;
+    border: 1px solid rgba(148, 163, 184, 0.28);
+    border-radius: 8px;
+    box-shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
+    transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
 }
 
 .MoviesListCardDark {
-    height: 460px;
-    width: 250px;
-    margin: 20px 10px;
-    padding-bottom: 5px;
+    width: 100%;
+    max-width: 238px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    background-color: #00000a;
-    border: 3px solid #013f3d;
-    border-radius: 20px;
-    transition: all ease 300ms;
+    overflow: hidden;
+    background-color: #111827;
+    border: 1px solid rgba(45, 212, 191, 0.22);
+    border-radius: 8px;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.28);
+    transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
 }
-
 
 .MoviesListCardDark:hover {
     cursor: pointer;
-    box-shadow: rgb(248, 189, 3) 0 8px 30px;
-    transform: scale(1.05) translate(5px, -10px);
+    border-color: rgba(251, 191, 36, 0.56);
+    box-shadow: 0 18px 42px rgba(251, 191, 36, 0.16);
+    transform: translateY(-6px);
 }
 
 .MoviesListCardLight:hover {
     cursor: pointer;
-    box-shadow: #020241 0 8px 40px;
-    transform: scale(1.05) translate(5px, -10px);
+    border-color: rgba(13, 148, 136, 0.48);
+    box-shadow: 0 18px 42px rgba(15, 23, 42, 0.16);
+    transform: translateY(-6px);
+}
+
+.MoviesListCardDark:focus-visible,
+.MoviesListCardLight:focus-visible {
+    outline: 3px solid rgba(20, 184, 166, 0.45);
+    outline-offset: 3px;
 }
 
 .imageBlock {
     width: 100%;
-    height: 85%;
-    border-radius: 16px 16px 0 0;
+    aspect-ratio: 2 / 3;
+    overflow: hidden;
+    background-color: #0f172a;
 }
 
 .imageBlock img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 15px 15px 0 0;
+    transition: transform 220ms ease;
 }
 
+.MoviesListCardDark:hover .imageBlock img,
+.MoviesListCardLight:hover .imageBlock img {
+    transform: scale(1.035);
+}
+
+.cardBody {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    padding: 12px;
+}
 
 .titleLight {
+    width: 100%;
+    min-height: 42px;
+    margin: 0;
+    color: #e5e7eb;
     font-size: 15px;
-    font-weight: bold;
-    padding: 5px;
+    font-weight: 700;
+    line-height: 1.35;
     text-align: center;
-    color: #a4a3a3;
-    overflow: scroll;
+    overflow-wrap: anywhere;
 }
 
 .titleDark {
+    width: 100%;
+    min-height: 42px;
+    margin: 0;
+    color: #0f172a;
     font-size: 15px;
-    font-weight: bold;
-    padding: 5px;
+    font-weight: 700;
+    line-height: 1.35;
     text-align: center;
-    color: #050550;
-    overflow: scroll;
+    overflow-wrap: anywhere;
 }
 
 .additionalData {
     width: 100%;
-    padding: 0 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 8px;
+}
+
+.rating {
+    min-width: 0;
 }
 
 .yearLight {
-    font-size: 14px;
-    color: #918f8f;
+    flex: 0 0 auto;
+    padding: 3px 8px;
+    color: #fef3c7;
+    background-color: rgba(251, 191, 36, 0.12);
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
 }
 
 .yearDark {
-    font-size: 14px;
-    color: #020225;
+    flex: 0 0 auto;
+    padding: 3px 8px;
+    color: #0f766e;
+    background-color: #ccfbf1;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
 }
 
 /******************************************Media*********************************************/
 
 @media (max-width: 768px) {
-    .MoviesListCardLight {
-        width: 310px;
-    }
-
+    .MoviesListCardLight,
     .MoviesListCardDark {
-        width: 310px;
+        max-width: 260px;
     }
 }
 
 @media (max-width: 480px) {
-    .MoviesListCardLight {
-        width: 600px;
-        height: 950px;
-    }
-
+    .MoviesListCardLight,
     .MoviesListCardDark {
-        width: 600px;
-        height: 950px;
+        max-width: 330px;
     }
 
-    .titleLight {
-        font-size: 30px;
-    }
-
+    .titleLight,
     .titleDark {
-        font-size: 30px;
+        font-size: 17px;
+    }
+
+    .additionalData {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .MoviesListCardDark:hover,
+    .MoviesListCardLight:hover,
+    .MoviesListCardDark:hover .imageBlock img,
+    .MoviesListCardLight:hover .imageBlock img {
+        transform: none;
     }
 }

@@ -33,28 +33,29 @@ const Pagination: FC = () => {
 
     return (
         <div className={`${lightTheme ? `${css.PaginationLight}` : `${css.PaginationDark}`}`}>
-            <button style={{display: page <= 1 ? "none" : "block"}}
+            {page > 1 && <button className={css.navButton}
+                    aria-label="Previous page"
                     onClick={prevPage}>
-                prev
-            </button>
-            <button className="page-link"
-                    style={{display: page >= 500 ? "none" : "block"}}>
+                ‹
+            </button>}
+            {page < 500 && <button className={css.currentPage}
+                    type="button"
+                    aria-current="page">
                 {page}
-            </button>
-            <button className="page-link"
-                    style={{display: page >= 500 ? "none" : "block"}}
+            </button>}
+            {page < 500 && <button className={css.pageButton}
                     onClick={nextPage}>
                 {page + 1}
-            </button>
-            <button className="page-link"
-                    style={{display: page >= 499 ? "none" : "block"}}
+            </button>}
+            {page < 499 && <button className={css.pageButton}
                     onClick={doubleNextPage}>
                 {page + 2}
-            </button>
-            <button style={{display: page >= 500 ? "none" : "block"}}
+            </button>}
+            {page < 500 && <button className={css.navButton}
+                    aria-label="Next page"
                     onClick={nextPage}>
-                next
-            </button>
+                ›
+            </button>}
         </div>
     );
 };

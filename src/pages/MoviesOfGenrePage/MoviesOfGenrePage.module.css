@@ -1,9 +1,17 @@
 .MoviesOfGenrePage {
-    min-height: 100vh;
-    height: 100%;
+    flex: 1;
+    min-height: calc(100vh - 128px);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
-    padding: 0 15px;
+    width: min(100%, 1280px);
+    margin: 0 auto;
+    padding: 22px clamp(12px, 3vw, 32px) 28px;
+}
+
+@media (max-width: 480px) {
+    .MoviesOfGenrePage {
+        padding: 14px 10px 22px;
+    }
 }
