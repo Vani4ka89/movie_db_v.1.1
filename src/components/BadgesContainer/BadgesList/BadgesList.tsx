@@ -17,6 +17,7 @@ const BadgesList: FC = () => {
     const drawerId = useId();
     const drawerTitleId = useId();
     const openButtonRef = useRef<HTMLButtonElement>(null);
+    const drawerRef = useRef<HTMLElement>(null);
 
     const selectedGenreIds = useMemo(() => {
         if (!genreId) {
@@ -56,22 +57,54 @@ const BadgesList: FC = () => {
             return;
         }
 
-        const handleEscape = (event: KeyboardEvent) => {
+        const handleKeyDown = (event: KeyboardEvent) => {
             if (event.key === 'Escape') {
                 setIsOpen(false);
                 openButtonRef.current?.focus();
             }
+
+            if (event.key !== 'Tab') {
+                return;
+            }
+
+            const focusableElements = drawerRef.current?.querySelectorAll<HTMLElement>(
+                'button:not([disabled]), input:not([disabled]), [href], [tabindex]:not([tabindex="-1"])'
+            );
+
+            if (!focusableElements?.length) {
+                return;
+            }
+
+            const firstElement = focusableElements[0];
+            const lastElement = focusableElements[focusableElements.length - 1];
+
+            if (event.shiftKey && document.activeElement === firstElement) {
+                event.preventDefault();
+                lastElement.focus();
+            } else if (!event.shiftKey && document.activeElement === lastElement) {
+                event.preventDefault();
+                firstElement.focus();
+            }
         };
 
-        document.addEventListener('keydown', handleEscape);
+        const focusTimer = window.setTimeout(() => {
+            const firstInteractive = drawerRef.current?.querySelector<HTMLElement>(
+                'button:not([disabled]), input:not([disabled])'
+            );
+            firstInteractive?.focus();
+        }, 0);
+
+        document.addEventListener('keydown', handleKeyDown);
 
         return () => {
-            document.removeEventListener('keydown', handleEscape);
+            window.clearTimeout(focusTimer);
+            document.removeEventListener('keydown', handleKeyDown);
         };
     }, [isOpen]);
 
     const closeGenreMenu = useCallback(() => {
         setIsOpen(false);
+        window.setTimeout(() => openButtonRef.current?.focus(), 0);
     }, []);
 
     const toggleGenreMenu = useCallback(() => {
@@ -114,11 +147,11 @@ const BadgesList: FC = () => {
     }, [badges, dispatch, draftGenreIds, navigate]);
 
     return (
-        <div className={`${css.BadgesList} ${lightTheme ? css.BadgesListLight : css.BadgesListDark}`}>
+        <div className={css.BadgesList}>
             <button
                 ref={openButtonRef}
                 type="button"
-                className={css.filterButton}
+                className={`${css.filterButton} ${isOpen ? css.filterButtonOpen : ''}`}
                 onClick={toggleGenreMenu}
                 aria-expanded={isOpen}
                 aria-controls={isOpen ? drawerId : undefined}
@@ -149,9 +182,12 @@ const BadgesList: FC = () => {
                     />
 
                     <aside
+                        ref={drawerRef}
                         id={drawerId}
                         className={`${css.drawer} ${lightTheme ? css.drawerLight : css.drawerDark}`}
                         aria-labelledby={drawerTitleId}
+                        aria-modal="true"
+                        role="dialog"
                     >
                         <div className={css.drawerHeader}>
                             <div>
@@ -190,11 +226,15 @@ const BadgesList: FC = () => {
                         </div>
 
                         <ul className={css.genreList} aria-label="Genre options">
-                            {badges.map(({id, name}) => {
+                            {badges.map(({id, name}, index) => {
                                 const isSelected = draftGenreIds.includes(id);
 
                                 return (
-                                    <li key={id} className={css.genreItem}>
+                                    <li
+                                        key={id}
+                                        className={css.genreItem}
+                                        style={{animationDelay: `${Math.min(index, 24) * 22}ms`}}
+                                    >
                                         <label className={`${css.genreOption} ${isSelected ? css.activeGenre : ''}`}>
                                             <input
                                                 className={css.checkboxInput}

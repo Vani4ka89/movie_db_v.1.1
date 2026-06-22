@@ -6,9 +6,13 @@ import {useAppSelector} from "../../../hooks";
 
 const Pagination: FC = () => {
 
-    const {lightTheme} = useAppSelector(state => state.movies);
+    const {error, lightTheme, loading, movies} = useAppSelector(state => state.movies);
     const [query, setQuery] = useSearchParams();
     const page = +query.get('page') ? +query.get('page') : 1;
+
+    if (loading || error || !movies.length) {
+        return null;
+    }
 
     const prevPage = () => {
         if (page <= 1) {

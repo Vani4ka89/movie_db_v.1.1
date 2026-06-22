@@ -2,6 +2,7 @@ const accessToken = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3MzYwZjY5NjdkNzljM2I1OWQyNj
 
 const baseURL = 'https://api.themoviedb.org/3';
 const posterBaseUrl = 'https://image.tmdb.org/t/p/w500';
+const backdropBaseUrl = 'https://image.tmdb.org/t/p/w1280';
 
 const discover = '/discover/movie';
 const movie = '/movie';
@@ -25,6 +26,7 @@ const urls = {
 
 export {
     accessToken,
+    backdropBaseUrl,
     baseURL,
     posterBaseUrl,
     urls

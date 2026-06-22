@@ -1,113 +1,122 @@
 .container {
     grid-column: 1 / -1;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 22px;
     width: 100%;
     min-height: 52vh;
+    padding: clamp(28px, 7vw, 70px) 0;
 }
 
 .loader {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(44px, 86px));
+    gap: clamp(10px, 2vw, 16px);
+    align-items: end;
+}
+
+.poster {
     position: relative;
-    width: min(250px, 76vw);
-    height: 28px;
+    aspect-ratio: 2 / 3;
+    overflow: hidden;
+    border: 1px solid var(--ui-border);
+    border-radius: 16px;
+    background:
+            linear-gradient(110deg, transparent 0%, rgba(255, 255, 255, 0.14) 42%, transparent 62%),
+            linear-gradient(145deg, var(--surface-inset), var(--surface-raised));
+    background-size: 260% 100%, 100% 100%;
+    box-shadow: var(--shadow-card);
+    animation: shimmer 1.7s var(--ease-out) infinite;
 }
 
-.loaderDot {
-    animation-name: loader;
-    animation-timing-function: ease-in-out;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
-    position: absolute;
-    width: 18px;
-    height: 18px;
-    border: 2px solid rgba(255, 255, 255, 0.9);
-    border-radius: 100%;
-    background-color: #14b8a6;
+.poster:nth-child(1) {
+    height: 120px;
+    animation-delay: 0ms;
 }
 
-.loaderDot:first-child {
-    background-color: #14b8a6;
-    animation-delay: 0.5s;
+.poster:nth-child(2) {
+    height: 152px;
+    animation-delay: 100ms;
 }
 
-.loaderDot:nth-child(2) {
-    background-color: #38bdf8;
-    animation-delay: 0.4s;
+.poster:nth-child(3) {
+    height: 132px;
+    animation-delay: 180ms;
 }
 
-.loaderDot:nth-child(3) {
-    background-color: #f59e0b;
-    animation-delay: 0.3s;
+.poster:nth-child(4) {
+    height: 164px;
+    animation-delay: 260ms;
 }
 
-.loaderDot:nth-child(4) {
-    background-color: #ef4444;
-    animation-delay: 0.2s;
+.copy {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 34px;
+    padding: 0 14px;
+    color: var(--text-secondary);
+    border: 1px solid var(--ui-border);
+    border-radius: var(--radius-pill);
+    background: var(--surface-glass);
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0;
+    box-shadow: inset 0 1px 0 var(--shine);
+    backdrop-filter: blur(var(--blur-sm));
+    -webkit-backdrop-filter: blur(var(--blur-sm));
 }
 
-.loaderDot:nth-child(5) {
-    background-color: #22c55e;
-    animation-delay: 0.1s;
+.pulse {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 0 var(--accent-soft);
+    animation: pulse 1.4s var(--ease-out) infinite;
 }
 
-.loaderDot:nth-child(6) {
-    background-color: #a78bfa;
-    animation-delay: 0s;
-}
-
-.loaderText {
-    position: absolute;
-    top: 36px;
-    left: 0;
-    right: 0;
-    width: 5rem;
-    margin: auto;
-    color: #0f766e;
-    font-size: 16px;
-    text-align: center;
-}
-
-.loaderText:after {
-    content: "Loading";
-    font-weight: bold;
-    animation-name: loading-text;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
-}
-
-@keyframes loader {
-    15% {
-        transform: translateX(0);
+@keyframes shimmer {
+    from {
+        background-position: 160% 0, 0 0;
     }
 
-    45% {
-        transform: translateX(calc(min(250px, 76vw) - 20px));
-    }
-
-    65% {
-        transform: translateX(calc(min(250px, 76vw) - 20px));
-    }
-
-    95% {
-        transform: translateX(0);
+    to {
+        background-position: -80% 0, 0 0;
     }
 }
 
-@keyframes loading-text {
-    0% {
-        content: "Loading";
+@keyframes pulse {
+    70% {
+        box-shadow: 0 0 0 10px transparent;
     }
 
-    25% {
-        content: "Loading.";
+    100% {
+        box-shadow: 0 0 0 0 transparent;
+    }
+}
+
+@media (max-width: 520px) {
+    .loader {
+        grid-template-columns: repeat(4, minmax(36px, 1fr));
+        width: min(100%, 320px);
     }
 
-    50% {
-        content: "Loading..";
+    .poster:nth-child(1) {
+        height: 96px;
     }
 
-    75% {
-        content: "Loading...";
+    .poster:nth-child(2) {
+        height: 122px;
+    }
+
+    .poster:nth-child(3) {
+        height: 106px;
+    }
+
+    .poster:nth-child(4) {
+        height: 132px;
     }
 }

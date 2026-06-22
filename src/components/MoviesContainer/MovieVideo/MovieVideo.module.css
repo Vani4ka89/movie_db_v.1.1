@@ -1,8 +1,13 @@
 .MovieVideo {
     flex: 1;
     display: grid;
-    gap: 24px;
-    width: min(100%, 1120px);
+    align-content: center;
+    gap: clamp(24px, 4vw, 42px);
+    width: 100%;
+    min-height: calc(100vh - 134px);
     margin: 0 auto;
-    padding: clamp(18px, 4vw, 40px) clamp(12px, 3vw, 32px);
+    padding: clamp(26px, 6vw, 72px) var(--space-page-x);
+    background:
+            linear-gradient(180deg, rgba(0, 0, 0, 0.34), transparent 36%),
+            linear-gradient(90deg, transparent, var(--page-sheen), transparent);
 }

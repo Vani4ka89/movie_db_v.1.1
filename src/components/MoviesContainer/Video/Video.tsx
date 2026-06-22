@@ -16,7 +16,8 @@ const Video: FC<IProps> = ({trailer}) => {
                 <div className={css.frame}>
                     <iframe
                         src={`https://www.youtube.com/embed/${key}?si=AkJBVRgR699ZLWzR`}
-                        title="YouTube video"
+                        title="Movie trailer"
+                        loading="lazy"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowFullScreen>
                     </iframe>

@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 import {useNavigate, useParams} from "react-router-dom";
 
-import {Loading} from "../../Loading/Loading";
 import {useAppDispatch, useAppSelector} from "../../../hooks";
 import css from './GenreBadgesOfMovie.module.css';
 import {moviesActions} from "../../../store";
@@ -16,8 +15,8 @@ const GenreBadgesOfMovie = () => {
         dispatch(moviesActions.getById({movieId: +movieId}))
     }, [movieId, dispatch]);
 
-    if (!movie) {
-        return <Loading/>
+    if (!movie?.genres?.length) {
+        return null;
     }
 
     const {genres} = movie;

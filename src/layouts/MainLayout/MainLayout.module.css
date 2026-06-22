@@ -1,40 +1,160 @@
-* {
+:global(*) {
     box-sizing: border-box;
 }
 
-html {
+:global(html) {
+    min-width: 320px;
     scroll-behavior: smooth;
+    background: #050506;
 }
 
-body {
+:global(body) {
     min-width: 320px;
     margin: 0;
-    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    background-color: #080d18;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+    background: #050506;
+    text-rendering: geometricPrecision;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+:global(button),
+:global(input),
+:global(textarea),
+:global(select) {
+    font: inherit;
+}
+
+:global(button) {
+    -webkit-tap-highlight-color: transparent;
+}
+
+:global(img) {
+    max-width: 100%;
+}
+
+.MainLayout {
+    --container-xl: 1320px;
+    --space-page-x: clamp(14px, 3.4vw, 38px);
+    --radius-xs: 8px;
+    --radius-sm: 10px;
+    --radius-md: 14px;
+    --radius-lg: 18px;
+    --radius-panel: 28px;
+    --radius-cinema: 34px;
+    --radius-pill: 999px;
+    --blur-sm: 14px;
+    --blur-lg: 26px;
+    --duration-fast: 180ms;
+    --duration-med: 320ms;
+    --duration-slow: 620ms;
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-spring: cubic-bezier(0.2, 0.9, 0.2, 1);
+
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    isolation: isolate;
+    width: 100%;
+    overflow-x: clip;
+    color: var(--text-primary);
+    background:
+            linear-gradient(180deg, var(--page-light-top) 0, transparent 430px),
+            linear-gradient(180deg, var(--app-bg) 0, var(--app-bg-soft) 100%);
+}
+
+.MainLayout::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+            linear-gradient(90deg, transparent, var(--page-sheen), transparent),
+            linear-gradient(180deg, transparent 0, var(--page-vignette) 100%);
 }
 
 .MainLayoutDark {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    color: #e5e7eb;
-    background:
-            linear-gradient(180deg, rgba(20, 184, 166, 0.12) 0, rgba(20, 184, 166, 0) 310px),
-            #080d18;
-    margin: 0 auto;
-    width: 100%;
+    --app-bg: #050506;
+    --app-bg-soft: #0d0d10;
+    --page-light-top: rgba(255, 255, 255, 0.055);
+    --page-sheen: rgba(245, 197, 107, 0.035);
+    --page-vignette: rgba(0, 0, 0, 0.48);
+    --text-primary: #f6f5f2;
+    --text-secondary: #b7bbc5;
+    --text-muted: #858b97;
+    --surface-glass: rgba(22, 22, 26, 0.66);
+    --surface-glass-strong: rgba(22, 22, 26, 0.82);
+    --surface-raised: rgba(30, 30, 36, 0.92);
+    --surface-solid: #16161a;
+    --surface-inset: rgba(255, 255, 255, 0.055);
+    --ui-border: rgba(255, 255, 255, 0.12);
+    --ui-border-strong: rgba(255, 255, 255, 0.2);
+    --shine: rgba(255, 255, 255, 0.18);
+    --accent: #f3c46d;
+    --accent-strong: #ffd37a;
+    --accent-alt: #70e1d1;
+    --accent-soft: rgba(243, 196, 109, 0.24);
+    --accent-alt-soft: rgba(112, 225, 209, 0.16);
+    --danger-soft: rgba(255, 100, 100, 0.18);
+    --button-primary-bg: linear-gradient(135deg, #f6d68b 0%, #f0b95c 100%);
+    --button-primary-text: #14110b;
+    --button-secondary-bg: rgba(255, 255, 255, 0.075);
+    --shadow-soft: 0 18px 48px rgba(0, 0, 0, 0.28);
+    --shadow-panel: 0 28px 80px rgba(0, 0, 0, 0.42);
+    --shadow-card: 0 24px 62px rgba(0, 0, 0, 0.34);
+    --shadow-accent: 0 16px 38px rgba(243, 196, 109, 0.18);
+    --focus-ring: 0 0 0 4px rgba(243, 196, 109, 0.32);
+    color-scheme: dark;
 }
 
 .MainLayoutLight {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    color: #0f172a;
-    background:
-            linear-gradient(180deg, #e0f7fa 0, rgba(224, 247, 250, 0) 340px),
-            #f6f8fb;
-    margin: 0 auto;
-    width: 100%;
+    --app-bg: #f7f8fb;
+    --app-bg-soft: #eef2f6;
+    --page-light-top: rgba(255, 255, 255, 0.9);
+    --page-sheen: rgba(10, 132, 255, 0.05);
+    --page-vignette: rgba(210, 218, 230, 0.58);
+    --text-primary: #1c1c1e;
+    --text-secondary: #5c6370;
+    --text-muted: #7d8593;
+    --surface-glass: rgba(255, 255, 255, 0.72);
+    --surface-glass-strong: rgba(255, 255, 255, 0.9);
+    --surface-raised: rgba(255, 255, 255, 0.96);
+    --surface-solid: #ffffff;
+    --surface-inset: rgba(28, 28, 30, 0.045);
+    --ui-border: rgba(28, 32, 40, 0.12);
+    --ui-border-strong: rgba(28, 32, 40, 0.2);
+    --shine: rgba(255, 255, 255, 0.92);
+    --accent: #0a84ff;
+    --accent-strong: #0066d6;
+    --accent-alt: #8a63ff;
+    --accent-soft: rgba(10, 132, 255, 0.16);
+    --accent-alt-soft: rgba(138, 99, 255, 0.12);
+    --danger-soft: rgba(220, 38, 38, 0.1);
+    --button-primary-bg: linear-gradient(135deg, #121214 0%, #303038 100%);
+    --button-primary-text: #ffffff;
+    --button-secondary-bg: rgba(255, 255, 255, 0.84);
+    --shadow-soft: 0 18px 48px rgba(28, 32, 40, 0.1);
+    --shadow-panel: 0 30px 80px rgba(28, 32, 40, 0.13);
+    --shadow-card: 0 24px 64px rgba(28, 32, 40, 0.16);
+    --shadow-accent: 0 16px 34px rgba(10, 132, 255, 0.18);
+    --focus-ring: 0 0 0 4px rgba(10, 132, 255, 0.22);
+    color-scheme: light;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    :global(html) {
+        scroll-behavior: auto;
+    }
+
+    :global(*),
+    :global(*::before),
+    :global(*::after) {
+        animation-duration: 1ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 1ms !important;
+    }
 }

@@ -9,7 +9,7 @@ const MainLayout: FC = () => {
     const {lightTheme} = useAppSelector(state => state.movies);
 
     return (
-        <div className={`${lightTheme ? `${css.MainLayoutLight}` : `${css.MainLayoutDark}`}`}>
+        <div className={`${css.MainLayout} ${lightTheme ? css.MainLayoutLight : css.MainLayoutDark}`}>
             <Header/>
             <Outlet/>
             <Footer/>

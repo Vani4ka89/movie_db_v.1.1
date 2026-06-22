@@ -1,17 +1,17 @@
 .MoviesFoundPage {
     flex: 1;
-    min-height: calc(100vh - 128px);
+    min-height: calc(100vh - 134px);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    width: min(100%, 1280px);
+    width: min(100%, var(--container-xl));
     margin: 0 auto;
-    padding: 22px clamp(12px, 3vw, 32px) 28px;
+    padding: clamp(18px, 3.4vw, 36px) var(--space-page-x) 0;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 520px) {
     .MoviesFoundPage {
-        padding: 14px 10px 22px;
+        padding: 14px 12px 0;
     }
 }

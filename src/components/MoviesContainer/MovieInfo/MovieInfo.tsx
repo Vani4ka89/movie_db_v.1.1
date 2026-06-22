@@ -1,10 +1,11 @@
-import {FC} from 'react';
+import {CSSProperties, FC} from 'react';
 import {useNavigate} from "react-router-dom";
 import {Rating} from "@mui/material";
+import PlayArrowRoundedIcon from '@mui/icons-material/PlayArrowRounded';
 
 import {useAppSelector} from "../../../hooks";
 import css from './MovieInfo.module.css';
-import {posterBaseUrl} from "../../../constants";
+import {backdropBaseUrl, posterBaseUrl} from "../../../constants";
 import {GenreBadgesOfMovie} from "../../BadgesContainer";
 import {IMovie} from "../../../interfaces";
 
@@ -13,38 +14,59 @@ interface IProps {
 }
 
 const MovieInfo: FC<IProps> = ({movie}) => {
-    const {id, poster_path, title, original_title, vote_average, overview} = movie;
+    const {backdrop_path, id, poster_path, release_date, title, original_title, vote_average, overview} = movie;
 
     const lightTheme = useAppSelector(state => state.movies.lightTheme);
     const navigate = useNavigate();
+    const displayTitle = original_title || title || 'Untitled movie';
+    const releaseYear = release_date?.substring(0, 4);
+    const backdropStyle = {
+        '--movie-backdrop': backdrop_path ? `url(${backdropBaseUrl}${backdrop_path})` : 'none'
+    } as CSSProperties;
 
     const getMovieVideos = () => {
         navigate(`/movies/${id}/video`);
     };
 
     return (
-        <div className={css.MovieInfo}>
+        <div className={`${css.MovieInfo} ${!backdrop_path ? css.noBackdrop : ''}`} style={backdropStyle}>
             <div className={css.posterPanel}>
-                <img src={`${posterBaseUrl}${poster_path}`} alt={title}/>
+                {poster_path ? (
+                    <img src={`${posterBaseUrl}${poster_path}`} alt={displayTitle}/>
+                ) : (
+                    <div className={css.posterFallback} aria-hidden="true">
+                        <span>{displayTitle.charAt(0)}</span>
+                    </div>
+                )}
             </div>
             <div className={`${css.content} ${lightTheme ? css.contentLight : css.contentDark}`}>
-                <h1 className={`${lightTheme ? `${css.titleDark}` : `${css.titleLight}`}`}>{original_title || title}</h1>
-                <GenreBadgesOfMovie/>
-                <p className={css.sectionLabel}>Rating</p>
-                <div className={css.ratingBlock}>
-                    <Rating
-                        className={css.rating}
-                        name="read-only"
-                        defaultValue={vote_average}
-                        readOnly max={10}
-                        precision={0.1}
-                        size='large'
-                        style={{color: '#f59e0b'}}
-                    />
+                {releaseYear && <p className={css.kicker}>{releaseYear}</p>}
+                <h1>{displayTitle}</h1>
+                <div className={css.genreShell}>
+                    <GenreBadgesOfMovie/>
                 </div>
-                <p className={css.sectionLabel}>Overview</p>
-                <h5>{overview}</h5>
-                <button className={css.btnPlay} onClick={getMovieVideos}>Play trailer</button>
+                <div className={css.ratingBlock} aria-label={`Rating ${vote_average?.toFixed(1) || 'not rated'} out of 10`}>
+                    <span className={css.ratingNumber}>{vote_average ? vote_average.toFixed(1) : 'NR'}</span>
+                    <div className={css.ratingStars}>
+                        <Rating
+                            className={css.rating}
+                            name="read-only"
+                            value={vote_average ? vote_average / 2 : 0}
+                            readOnly max={5}
+                            precision={0.1}
+                            size='large'
+                        />
+                        <span>TMDB rating</span>
+                    </div>
+                </div>
+                <div className={css.overviewBlock}>
+                    <p className={css.sectionLabel}>Overview</p>
+                    <p>{overview || 'No overview is available for this title yet.'}</p>
+                </div>
+                <button className={css.btnPlay} onClick={getMovieVideos}>
+                    <PlayArrowRoundedIcon fontSize="small"/>
+                    <span>Play trailer</span>
+                </button>
             </div>
         </div>
     );

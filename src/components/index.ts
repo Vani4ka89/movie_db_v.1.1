@@ -5,4 +5,5 @@ export * from './Footer/Footer';
 export * from './Footer/Footer.module.css';
 export * from './Loading/Loading';
 export * from './Loading/Loading.module.css';
+export * from './EmptyState/EmptyState';
 export * from './BadgesContainer';

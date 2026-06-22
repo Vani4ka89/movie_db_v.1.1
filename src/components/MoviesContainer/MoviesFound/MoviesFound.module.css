@@ -1,15 +1,29 @@
 .MoviesFound {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-    gap: clamp(16px, 2vw, 28px);
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 205px), 1fr));
+    align-items: start;
+    gap: clamp(18px, 2.35vw, 34px);
     width: 100%;
-    padding: 6px 0 24px;
+    padding: 2px 0 clamp(28px, 5vw, 52px);
+    perspective: 1200px;
 }
 
-@media (max-width: 480px) {
+@media (min-width: 1280px) {
+    .MoviesFound {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 560px) {
+    .MoviesFound {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+        padding-bottom: 28px;
+    }
+}
+
+@media (max-width: 360px) {
     .MoviesFound {
         grid-template-columns: 1fr;
-        gap: 16px;
-        padding-bottom: 18px;
     }
 }

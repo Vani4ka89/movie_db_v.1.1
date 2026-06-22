@@ -1,10 +1,12 @@
-import React, {ChangeEvent, FC, FormEvent, useState} from 'react';
+import React, {ChangeEvent, FC, FormEvent, useId, useState} from 'react';
 import {NavLink, useNavigate} from "react-router-dom";
+import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
+import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+import DarkModeRoundedIcon from '@mui/icons-material/DarkModeRounded';
+import LightModeRoundedIcon from '@mui/icons-material/LightModeRounded';
 
 import css from './Header.module.css';
 import logo from '../../assets/images/Logo.jpg';
-import sun from '../../assets/images/free-icon-sun-5247953.png';
-import moon from '../../assets/images/free-icon-moon-3599494.png';
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import {moviesActions} from "../../store";
 
@@ -13,6 +15,7 @@ const Header: FC = () => {
     const {searchTerm, lightTheme} = useAppSelector(state => state.movies);
     const dispatch = useAppDispatch();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const navContentId = useId();
 
     const searchMovies = (e: ChangeEvent<HTMLInputElement>) => {
         (dispatch(moviesActions.setSearchTerm(e.target.value)));
@@ -34,6 +37,12 @@ const Header: FC = () => {
         window.scrollTo({top: 0, behavior: 'smooth'});
     };
 
+    const clearSearch = () => {
+        dispatch(moviesActions.setSearchTerm(''));
+        navigate('/movies');
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    };
+
     const changeTheme = () => {
         dispatch(moviesActions.setLightTheme());
     };
@@ -51,6 +60,7 @@ const Header: FC = () => {
                     type="button"
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
                     aria-expanded={isMenuOpen}
+                    aria-controls={navContentId}
                     aria-label="Toggle navigation"
                 >
                     <span></span>
@@ -58,9 +68,9 @@ const Header: FC = () => {
                     <span></span>
                 </button>
 
-                <div className={`${css.navContent} ${isMenuOpen ? css.navContentOpen : ''}`}>
+                <div id={navContentId} className={`${css.navContent} ${isMenuOpen ? css.navContentOpen : ''}`}>
                     <NavLink
-                        className={`${css.navBtn} ${lightTheme ? css.navBtnLight : css.navBtnDark}`}
+                        className={css.navBtn}
                         onClick={doneScroll}
                         aria-current="page"
                         to={'/movies'}
@@ -69,18 +79,39 @@ const Header: FC = () => {
                     </NavLink>
 
                     <form className={css.searchForm} role="search" onSubmit={preventSearchSubmit}>
+                        <SearchRoundedIcon className={css.searchIcon} aria-hidden="true"/>
                         <input
-                            className={`${css.searchInput} ${lightTheme ? css.searchLight : css.searchDark}`}
+                            className={`${css.searchInput} ${searchTerm ? css.searchActive : ''}`}
                             type="search"
                             placeholder="Search movies"
                             aria-label="Search movies"
                             value={searchTerm || ''}
                             onChange={searchMovies}/>
+                        {!!searchTerm && (
+                            <button
+                                className={css.clearSearchButton}
+                                type="button"
+                                onClick={clearSearch}
+                                aria-label="Clear search"
+                            >
+                                <CloseRoundedIcon fontSize="small"/>
+                            </button>
+                        )}
                     </form>
 
-                    <button className={css.themeButton} type="button" onClick={changeTheme}
-                            aria-label="Change color theme">
-                        <img className={css.themeImg} src={lightTheme ? moon : sun} alt=""/>
+                    <button
+                        className={`${css.themeButton} ${lightTheme ? css.themeLight : css.themeDark}`}
+                        type="button"
+                        onClick={changeTheme}
+                        aria-label={`Switch to ${lightTheme ? 'dark' : 'light'} theme`}
+                    >
+                        <span className={css.themeTrack} aria-hidden="true">
+                            <span className={css.themeOption}><LightModeRoundedIcon fontSize="inherit"/></span>
+                            <span className={css.themeOption}><DarkModeRoundedIcon fontSize="inherit"/></span>
+                            <span className={css.themeKnob}>
+                                {lightTheme ? <LightModeRoundedIcon fontSize="inherit"/> : <DarkModeRoundedIcon fontSize="inherit"/>}
+                            </span>
+                        </span>
                     </button>
                 </div>
             </nav>

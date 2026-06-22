@@ -1,4 +1,4 @@
-import {createAsyncThunk, createSlice, isFulfilled, isRejected} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice, isFulfilled, isPending, isRejected} from "@reduxjs/toolkit";
 import {AxiosError} from "axios";
 
 import {IMovie, IPagination, IVideo, IVideoPagination} from "../../interfaces";
@@ -11,6 +11,7 @@ interface IState {
     lightTheme: boolean;
     searchTerm: string | number;
     error: boolean;
+    loading: boolean;
 }
 
 let initialState: IState = {
@@ -19,7 +20,8 @@ let initialState: IState = {
     videos: [],
     lightTheme: true,
     searchTerm: null,
-    error: null
+    error: null,
+    loading: true
 };
 
 const getAll = createAsyncThunk<IPagination<IMovie>, { page: number }>(
@@ -101,31 +103,58 @@ const moviesSlice = createSlice({
     },
     extraReducers: builder =>
         builder
+            .addCase(getAll.pending, state => {
+                state.movies = [];
+            })
+
             .addCase(getAll.fulfilled, (state, action) => {
                 state.movies = action.payload.results;
+            })
+
+            .addCase(getById.pending, state => {
+                state.movie = null;
             })
 
             .addCase(getById.fulfilled, (state, action) => {
                 state.movie = action.payload;
             })
 
+            .addCase(getOfGenre.pending, state => {
+                state.movies = [];
+            })
+
             .addCase(getOfGenre.fulfilled, (state, action) => {
                 state.movies = action.payload.results;
+            })
+
+            .addCase(getFound.pending, state => {
+                state.movies = [];
             })
 
             .addCase(getFound.fulfilled, (state, action) => {
                 state.movies = action.payload.results;
             })
 
+            .addCase(getVideo.pending, state => {
+                state.videos = [];
+            })
+
             .addCase(getVideo.fulfilled, (state, action) => {
                 state.videos = action.payload.results;
             })
 
+            .addMatcher(isPending(getAll, getById, getOfGenre, getFound, getVideo), state => {
+                state.loading = true;
+                state.error = null;
+            })
+
             .addMatcher(isFulfilled(getAll, getById, getOfGenre, getFound, getVideo), state => {
+                state.loading = false;
                 state.error = null;
             })
 
             .addMatcher(isRejected(getAll, getById, getOfGenre, getFound, getVideo), state => {
+                state.loading = false;
                 state.error = true;
             })
 });

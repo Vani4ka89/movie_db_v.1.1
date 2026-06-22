@@ -4,15 +4,16 @@ import css from './Loading.module.css';
 
 const Loading: FC = () => {
     return (
-        <div className={css.container}>
-            <div className={css.loader}>
-                <div className={css.loaderDot}></div>
-                <div className={css.loaderDot}></div>
-                <div className={css.loaderDot}></div>
-                <div className={css.loaderDot}></div>
-                <div className={css.loaderDot}></div>
-                <div className={css.loaderDot}></div>
-                <div className={css.loaderText}></div>
+        <div className={css.container} role="status" aria-live="polite">
+            <div className={css.loader} aria-hidden="true">
+                <div className={css.poster}></div>
+                <div className={css.poster}></div>
+                <div className={css.poster}></div>
+                <div className={css.poster}></div>
+            </div>
+            <div className={css.copy}>
+                <span className={css.pulse}></span>
+                <span>Loading cinema</span>
             </div>
         </div>
     );
