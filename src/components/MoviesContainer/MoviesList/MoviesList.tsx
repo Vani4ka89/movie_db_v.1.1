@@ -7,6 +7,7 @@ import {moviesActions} from "../../../store";
 import css from './MoviesList.module.css';
 import {Loading} from "../../Loading/Loading";
 import {EmptyState} from "../../EmptyState/EmptyState";
+import {IMovie} from "../../../interfaces";
 
 const MoviesList: FC = () => {
     const {error, loading, movies} = useAppSelector(state => state.movies);
@@ -34,7 +35,7 @@ const MoviesList: FC = () => {
                     message="The current collection returned no titles. Try another page or adjust your filters."
                 />
             )}
-            {!loading && !error && movies.map((movie, index) => (
+            {!loading && !error && movies.map((movie: IMovie, index: number) => (
                 <MoviesListCard key={movie.id} movie={movie} index={index}/>
             ))}
         </div>

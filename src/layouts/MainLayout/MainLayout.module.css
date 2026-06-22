@@ -5,14 +5,14 @@
 :global(html) {
     min-width: 320px;
     scroll-behavior: smooth;
-    background: #050506;
+    background: #060719;
 }
 
 :global(body) {
     min-width: 320px;
     margin: 0;
     font-family: Inter, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
-    background: #050506;
+    background: #060719;
     text-rendering: geometricPrecision;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -34,12 +34,12 @@
 }
 
 .MainLayout {
-    --container-xl: 1320px;
+    --container-xl: 1360px;
     --space-page-x: clamp(14px, 3.4vw, 38px);
     --radius-xs: 8px;
-    --radius-sm: 10px;
-    --radius-md: 14px;
-    --radius-lg: 18px;
+    --radius-sm: 9px;
+    --radius-md: 12px;
+    --radius-lg: 14px;
     --radius-panel: 28px;
     --radius-cinema: 34px;
     --radius-pill: 999px;
@@ -61,8 +61,8 @@
     overflow-x: clip;
     color: var(--text-primary);
     background:
-            linear-gradient(180deg, var(--page-light-top) 0, transparent 430px),
-            linear-gradient(180deg, var(--app-bg) 0, var(--app-bg-soft) 100%);
+            linear-gradient(180deg, var(--page-light-top) 0, transparent 520px),
+            linear-gradient(125deg, var(--app-bg) 0, var(--app-bg-deep) 46%, var(--app-bg-soft) 100%);
 }
 
 .MainLayout::before {
@@ -72,53 +72,55 @@
     z-index: -1;
     pointer-events: none;
     background:
-            linear-gradient(90deg, transparent, var(--page-sheen), transparent),
+            linear-gradient(90deg, transparent 0, var(--page-sheen) 48%, transparent 100%),
             linear-gradient(180deg, transparent 0, var(--page-vignette) 100%);
 }
 
 .MainLayoutDark {
-    --app-bg: #050506;
-    --app-bg-soft: #0d0d10;
-    --page-light-top: rgba(255, 255, 255, 0.055);
-    --page-sheen: rgba(245, 197, 107, 0.035);
-    --page-vignette: rgba(0, 0, 0, 0.48);
-    --text-primary: #f6f5f2;
-    --text-secondary: #b7bbc5;
-    --text-muted: #858b97;
-    --surface-glass: rgba(22, 22, 26, 0.66);
-    --surface-glass-strong: rgba(22, 22, 26, 0.82);
-    --surface-raised: rgba(30, 30, 36, 0.92);
-    --surface-solid: #16161a;
-    --surface-inset: rgba(255, 255, 255, 0.055);
-    --ui-border: rgba(255, 255, 255, 0.12);
-    --ui-border-strong: rgba(255, 255, 255, 0.2);
-    --shine: rgba(255, 255, 255, 0.18);
-    --accent: #f3c46d;
-    --accent-strong: #ffd37a;
-    --accent-alt: #70e1d1;
-    --accent-soft: rgba(243, 196, 109, 0.24);
-    --accent-alt-soft: rgba(112, 225, 209, 0.16);
-    --danger-soft: rgba(255, 100, 100, 0.18);
-    --button-primary-bg: linear-gradient(135deg, #f6d68b 0%, #f0b95c 100%);
-    --button-primary-text: #14110b;
-    --button-secondary-bg: rgba(255, 255, 255, 0.075);
-    --shadow-soft: 0 18px 48px rgba(0, 0, 0, 0.28);
-    --shadow-panel: 0 28px 80px rgba(0, 0, 0, 0.42);
-    --shadow-card: 0 24px 62px rgba(0, 0, 0, 0.34);
-    --shadow-accent: 0 16px 38px rgba(243, 196, 109, 0.18);
-    --focus-ring: 0 0 0 4px rgba(243, 196, 109, 0.32);
+    --app-bg: #060719;
+    --app-bg-deep: #0b0d2b;
+    --app-bg-soft: #15143a;
+    --page-light-top: rgba(78, 83, 155, 0.18);
+    --page-sheen: rgba(255, 18, 96, 0.065);
+    --page-vignette: rgba(2, 3, 15, 0.66);
+    --text-primary: #fbfbff;
+    --text-secondary: #bfc4e8;
+    --text-muted: #7d84b6;
+    --surface-glass: rgba(15, 17, 49, 0.68);
+    --surface-glass-strong: rgba(18, 20, 59, 0.9);
+    --surface-raised: rgba(24, 27, 75, 0.95);
+    --surface-solid: #101333;
+    --surface-inset: rgba(255, 255, 255, 0.06);
+    --ui-border: rgba(255, 255, 255, 0.1);
+    --ui-border-strong: rgba(255, 255, 255, 0.24);
+    --shine: rgba(255, 255, 255, 0.16);
+    --accent: #ff125f;
+    --accent-strong: #ff4d89;
+    --accent-alt: #6ddcff;
+    --accent-soft: rgba(255, 18, 95, 0.24);
+    --accent-alt-soft: rgba(109, 220, 255, 0.13);
+    --danger-soft: rgba(255, 80, 96, 0.18);
+    --button-primary-bg: linear-gradient(135deg, #ff0b58 0%, #ff2f73 55%, #ff5a8f 100%);
+    --button-primary-text: #ffffff;
+    --button-secondary-bg: rgba(255, 255, 255, 0.085);
+    --shadow-soft: 0 18px 52px rgba(0, 0, 0, 0.28);
+    --shadow-panel: 0 30px 88px rgba(0, 0, 0, 0.48);
+    --shadow-card: 0 24px 68px rgba(2, 3, 15, 0.38);
+    --shadow-accent: 0 18px 42px rgba(255, 18, 95, 0.28);
+    --focus-ring: 0 0 0 4px rgba(255, 18, 95, 0.28);
     color-scheme: dark;
 }
 
 .MainLayoutLight {
-    --app-bg: #f7f8fb;
-    --app-bg-soft: #eef2f6;
-    --page-light-top: rgba(255, 255, 255, 0.9);
-    --page-sheen: rgba(10, 132, 255, 0.05);
-    --page-vignette: rgba(210, 218, 230, 0.58);
-    --text-primary: #1c1c1e;
-    --text-secondary: #5c6370;
-    --text-muted: #7d8593;
+    --app-bg: #f4f6ff;
+    --app-bg-deep: #e8ecff;
+    --app-bg-soft: #ffffff;
+    --page-light-top: rgba(255, 255, 255, 0.92);
+    --page-sheen: rgba(255, 18, 95, 0.05);
+    --page-vignette: rgba(203, 210, 241, 0.58);
+    --text-primary: #12142b;
+    --text-secondary: #525a82;
+    --text-muted: #7c84a9;
     --surface-glass: rgba(255, 255, 255, 0.72);
     --surface-glass-strong: rgba(255, 255, 255, 0.9);
     --surface-raised: rgba(255, 255, 255, 0.96);
@@ -127,20 +129,20 @@
     --ui-border: rgba(28, 32, 40, 0.12);
     --ui-border-strong: rgba(28, 32, 40, 0.2);
     --shine: rgba(255, 255, 255, 0.92);
-    --accent: #0a84ff;
-    --accent-strong: #0066d6;
-    --accent-alt: #8a63ff;
-    --accent-soft: rgba(10, 132, 255, 0.16);
-    --accent-alt-soft: rgba(138, 99, 255, 0.12);
+    --accent: #e9004f;
+    --accent-strong: #c90043;
+    --accent-alt: #3366ff;
+    --accent-soft: rgba(233, 0, 79, 0.16);
+    --accent-alt-soft: rgba(51, 102, 255, 0.12);
     --danger-soft: rgba(220, 38, 38, 0.1);
-    --button-primary-bg: linear-gradient(135deg, #121214 0%, #303038 100%);
+    --button-primary-bg: linear-gradient(135deg, #e9004f 0%, #ff477d 100%);
     --button-primary-text: #ffffff;
     --button-secondary-bg: rgba(255, 255, 255, 0.84);
     --shadow-soft: 0 18px 48px rgba(28, 32, 40, 0.1);
     --shadow-panel: 0 30px 80px rgba(28, 32, 40, 0.13);
     --shadow-card: 0 24px 64px rgba(28, 32, 40, 0.16);
-    --shadow-accent: 0 16px 34px rgba(10, 132, 255, 0.18);
-    --focus-ring: 0 0 0 4px rgba(10, 132, 255, 0.22);
+    --shadow-accent: 0 16px 34px rgba(233, 0, 79, 0.2);
+    --focus-ring: 0 0 0 4px rgba(233, 0, 79, 0.2);
     color-scheme: light;
 }
 

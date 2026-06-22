@@ -29,7 +29,10 @@ const MainLayout: FC = () => {
     }, [pathname]);
 
     return (
-        <div className={`${css.MainLayout} ${lightTheme ? css.MainLayoutLight : css.MainLayoutDark}`}>
+        <div
+            className={`${css.MainLayout} ${lightTheme ? css.MainLayoutLight : css.MainLayoutDark}`}
+            data-theme={lightTheme ? 'light' : 'dark'}
+        >
             <Header/>
             <Outlet/>
             <Footer/>

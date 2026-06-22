@@ -4,6 +4,7 @@ import {useNavigate, useParams} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../../../hooks";
 import css from './GenreBadgesOfMovie.module.css';
 import {moviesActions} from "../../../store";
+import {IGenreBadge} from "../../../interfaces";
 
 const GenreBadgesOfMovie = () => {
     const {movieId} = useParams<{ movieId: string }>();
@@ -28,7 +29,7 @@ const GenreBadgesOfMovie = () => {
 
     return (
         <div className={`${lightTheme ? `${css.GenreBadgesOfMovieLight}` : `${css.GenreBadgesOfMovieDark}`}`}>
-            {genres.map(genre => <button key={genre.id} onClick={() => getGenreMovies(genre.id)}>{genre.name}</button>)}
+            {genres.map((genre: IGenreBadge) => <button key={genre.id} onClick={() => getGenreMovies(genre.id)}>{genre.name}</button>)}
         </div>
     );
 };

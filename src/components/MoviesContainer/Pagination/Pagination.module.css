@@ -18,10 +18,10 @@
     height: 44px;
     padding: 0 15px;
     color: var(--text-primary);
-    border: 1px solid var(--ui-border);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: var(--radius-pill);
-    background: var(--surface-glass);
-    box-shadow: inset 0 1px 0 var(--shine);
+    background: rgba(15, 17, 49, 0.68);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
     font-size: 14px;
     font-weight: 850;
     line-height: 1;
@@ -37,8 +37,8 @@
 .PaginationDark button:hover {
     cursor: pointer;
     color: var(--accent-strong);
-    border-color: var(--ui-border-strong);
-    background: var(--surface-glass-strong);
+    border-color: rgba(255, 255, 255, 0.22);
+    background: rgba(18, 20, 59, 0.9);
     box-shadow: inset 0 1px 0 var(--shine), var(--shadow-soft);
     transform: translateY(-2px);
 }
@@ -64,6 +64,25 @@
     border-color: transparent;
     background: var(--button-primary-bg);
     box-shadow: var(--shadow-accent);
+}
+
+:global([data-theme="light"]) .PaginationLight button,
+:global([data-theme="light"]) .PaginationDark button {
+    border-color: rgba(18, 20, 43, 0.12);
+    background: rgba(255, 255, 255, 0.84);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88), 0 14px 34px rgba(39, 44, 88, 0.1);
+}
+
+:global([data-theme="light"]) .PaginationLight button:hover,
+:global([data-theme="light"]) .PaginationDark button:hover {
+    border-color: rgba(18, 20, 43, 0.2);
+    background: #ffffff;
+}
+
+:global([data-theme="light"]) .PaginationLight .currentPage,
+:global([data-theme="light"]) .PaginationDark .currentPage {
+    color: var(--button-primary-text);
+    background: var(--button-primary-bg);
 }
 
 .navButton {

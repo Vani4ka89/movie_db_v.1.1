@@ -7,3 +7,4 @@ export * from './Loading/Loading';
 export * from './Loading/Loading.module.css';
 export * from './EmptyState/EmptyState';
 export * from './BadgesContainer';
+export * from './TmdbMediaCard/TmdbMediaCard';

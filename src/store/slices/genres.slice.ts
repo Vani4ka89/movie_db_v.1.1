@@ -22,7 +22,7 @@ const getBadges = createAsyncThunk<IGenreBadgePagination<IGenreBadge>, void>(
             return data;
         } catch (e) {
             const err = e as AxiosError;
-            return rejectWithValue(err.response.data);
+            return rejectWithValue(err.response?.data || err.message);
         }
     }
 );

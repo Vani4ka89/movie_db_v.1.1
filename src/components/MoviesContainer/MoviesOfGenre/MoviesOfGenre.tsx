@@ -7,6 +7,7 @@ import {MoviesListCard} from "../MoviesListCard/MoviesListCard";
 import css from './MoviesOfGenre.module.css';
 import {Loading} from "../../Loading/Loading";
 import {EmptyState} from "../../EmptyState/EmptyState";
+import {IMovie} from "../../../interfaces";
 
 const MoviesOfGenre: FC = () => {
 
@@ -53,7 +54,7 @@ const MoviesOfGenre: FC = () => {
                     onAction={clearFilters}
                 />
             )}
-            {!loading && !error && movies.map((movie, index) => (
+            {!loading && !error && movies.map((movie: IMovie, index: number) => (
                 <MoviesListCard key={movie.id} movie={movie} index={index}/>
             ))}
         </div>

@@ -6,3 +6,6 @@ export * from './MoviesOfGenrePage/MoviesOfGenrePage';
 export * from './MoviesOfGenrePage/MoviesOfGenrePage.module.css';
 export * from './MoviesFoundPage/MoviesFoundPage';
 export * from './MoviesFoundPage/MoviesFoundPage.module.css';
+export * from './ExplorePage/ExplorePage';
+export * from './TmdbDetailPage/TmdbDetailPage';
+export * from './TmdbEntityDetailPage/TmdbEntityDetailPage';

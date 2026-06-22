@@ -7,13 +7,14 @@ import {moviesActions} from "../../../store";
 import css from './MovieVideo.module.css';
 import {Loading} from "../../Loading/Loading";
 import {EmptyState} from "../../EmptyState/EmptyState";
+import {IVideo} from "../../../interfaces";
 
 const MovieVideo: FC = () => {
     const {movieId} = useParams<{ movieId: string }>();
     const {error, loading, videos} = useAppSelector(state => state.movies);
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
-    const trailers = videos.filter(trailer => trailer.type === 'Trailer');
+    const trailers = videos.filter((trailer: IVideo) => trailer.type === 'Trailer');
 
     useEffect(() => {
         dispatch(moviesActions.getVideo({movieId: +movieId}))
@@ -38,7 +39,7 @@ const MovieVideo: FC = () => {
                     onAction={() => navigate(`/movies/${movieId}`)}
                 />
             )}
-            {!loading && !error && trailers.map(trailer => <Video key={trailer.id} trailer={trailer}/>)}
+            {!loading && !error && trailers.map((trailer: IVideo) => <Video key={trailer.id} trailer={trailer}/>)}
         </div>
     );
 };

@@ -6,7 +6,6 @@ import DarkModeRoundedIcon from '@mui/icons-material/DarkModeRounded';
 import LightModeRoundedIcon from '@mui/icons-material/LightModeRounded';
 
 import css from './Header.module.css';
-import logo from '../../assets/images/Logo.jpg';
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import {moviesActions} from "../../store";
 
@@ -53,8 +52,14 @@ const Header: FC = () => {
         <header className={`${css.Header} ${lightTheme ? css.HeaderLight : css.HeaderDark}`}>
             <nav className={css.navbar}>
                 <NavLink className={css.brand} to={'/movies'} onClick={doneScroll}>
-                    <img src={logo} alt="Movie DB logo"/>
-                    <span>Movie DB</span>
+                    <span className={css.brandMark} aria-hidden="true">
+                        <span>M</span>
+                        <span>D</span>
+                        <span>B</span>
+                    </span>
+                    <span className={css.brandName}>
+                        Movie<span>DB</span>
+                    </span>
                 </NavLink>
 
                 <form className={css.searchForm} role="search" onSubmit={preventSearchSubmit}>
@@ -112,10 +117,23 @@ const Header: FC = () => {
                     <NavLink
                         className={css.navBtn}
                         onClick={doneScroll}
-                        aria-current="page"
                         to={'/movies'}
                     >
+                        Home
+                    </NavLink>
+                    <NavLink
+                        className={css.navBtn}
+                        onClick={doneScroll}
+                        to={'/explore/movies/now-playing?page=1'}
+                    >
                         Movies
+                    </NavLink>
+                    <NavLink
+                        className={css.navBtn}
+                        onClick={doneScroll}
+                        to={'/explore/movies/popular?page=1'}
+                    >
+                        Explore
                     </NavLink>
                 </div>
             </nav>
