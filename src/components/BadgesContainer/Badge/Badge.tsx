@@ -18,7 +18,7 @@ const Badge: FC<IProps> = ({badge}) => {
     const dispatch = useAppDispatch();
 
     const getGenreMovies = () => {
-        navigate(`/movies/genre/${id}`);
+        navigate(`/movies/genre/${id}?page=1`);
         dispatch(moviesActions.setSearchTerm(''));
     };
 

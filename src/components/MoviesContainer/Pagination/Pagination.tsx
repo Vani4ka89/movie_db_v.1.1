@@ -8,7 +8,7 @@ const Pagination: FC = () => {
 
     const {error, lightTheme, loading, movies} = useAppSelector(state => state.movies);
     const [query, setQuery] = useSearchParams();
-    const page = +query.get('page') ? +query.get('page') : 1;
+    const page = Math.max(1, Number(query.get('page')) || 1);
 
     if (loading || error || !movies.length) {
         return null;

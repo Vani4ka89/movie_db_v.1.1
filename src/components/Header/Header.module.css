@@ -20,9 +20,11 @@
 
 .navbar {
     display: grid;
-    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-columns: auto auto minmax(260px, 560px) auto;
+    grid-template-areas: "brand nav search actions";
     align-items: center;
-    gap: clamp(16px, 3vw, 28px);
+    justify-content: space-between;
+    gap: clamp(12px, 2.4vw, 22px);
     width: min(100%, var(--container-xl));
     min-height: 76px;
     margin: 0 auto;
@@ -30,6 +32,7 @@
 }
 
 .brand {
+    grid-area: brand;
     display: inline-flex;
     align-items: center;
     gap: 12px;
@@ -69,9 +72,10 @@
 }
 
 .navContent {
+    grid-area: nav;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: flex-start;
     gap: 12px;
     min-width: 0;
 }
@@ -120,12 +124,13 @@
 }
 
 .searchForm {
+    grid-area: search;
     position: relative;
     display: flex;
     align-items: center;
-    flex: 1 1 460px;
-    min-width: 210px;
-    max-width: 560px;
+    justify-self: stretch;
+    min-width: 0;
+    width: 100%;
 }
 
 .searchIcon {
@@ -145,7 +150,7 @@
     height: 44px;
     padding: 0 46px 0 43px;
     color: var(--text-primary);
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 650;
     line-height: 1;
     border: 1px solid var(--ui-border);
@@ -157,6 +162,14 @@
     background var(--duration-fast) var(--ease-out),
     border-color var(--duration-fast) var(--ease-out),
     box-shadow var(--duration-fast) var(--ease-out);
+}
+
+.headerActions {
+    grid-area: actions;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
 }
 
 .searchInput::placeholder {
@@ -324,16 +337,14 @@
     transform: translateY(-7px) rotate(-45deg);
 }
 
-@media (min-width: 992px) {
-    .searchForm:focus-within {
-        flex-basis: 560px;
-    }
-}
-
 @media (max-width: 991px) {
     .navbar {
-        grid-template-columns: minmax(0, auto) auto;
-        gap: 10px;
+        grid-template-columns: minmax(0, 1fr) auto;
+        grid-template-areas:
+                "brand actions"
+                "search search"
+                "nav nav";
+        gap: 10px 12px;
         min-height: 68px;
     }
 
@@ -361,27 +372,24 @@
     }
 
     .navContentOpen {
-        max-height: 260px;
+        max-height: 72px;
         padding: 8px 0 4px;
         opacity: 1;
         pointer-events: auto;
         transform: translateY(0);
     }
 
-    .navBtn,
-    .themeButton {
+    .navBtn {
         width: 100%;
     }
 
     .searchForm {
-        flex: 1 1 auto;
-        max-width: none;
-        min-width: 0;
         width: 100%;
     }
 
     .themeButton {
-        height: 44px;
+        width: 70px;
+        height: 42px;
     }
 }
 
@@ -403,6 +411,6 @@
 
     .searchInput {
         height: 42px;
-        font-size: 14px;
+        font-size: 16px;
     }
 }

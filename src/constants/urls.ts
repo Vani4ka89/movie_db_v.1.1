@@ -15,7 +15,7 @@ const urls = {
         // popular: `${movie}/popular`,
         // lists: (movieId: number): string => `${movie}/${movieId}/lists`,
         byId: (movieId: number): string => `${movie}/${movieId}`,
-        search: (searchTerm: string | number): string => `/search/${movie}?query=${searchTerm}`,
+        search: '/search/movie',
         video: (movieId: number): string => `${movie}/${movieId}/videos`
     },
     genres: {

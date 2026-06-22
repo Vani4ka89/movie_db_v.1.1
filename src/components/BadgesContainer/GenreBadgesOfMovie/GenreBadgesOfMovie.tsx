@@ -22,7 +22,7 @@ const GenreBadgesOfMovie = () => {
     const {genres} = movie;
 
     const getGenreMovies = (genreId: number) => {
-        navigate(`/movies/genre/${genreId}`);
+        navigate(`/movies/genre/${genreId}?page=1`);
         dispatch(moviesActions.setSearchTerm(''));
     };
 

@@ -15,11 +15,16 @@ const MoviesFound: FC = () => {
     const navigate = useNavigate();
     const [query,] = useSearchParams();
 
-    const page = +query.get('page');
+    const page = Math.max(1, Number(query.get('page')) || 1);
 
     useEffect(() => {
+        if (!String(searchTerm || '').trim()) {
+            navigate('/movies?page=1', {replace: true});
+            return;
+        }
+
         dispatch(moviesActions.getFound({searchTerm, page}));
-    }, [dispatch, page, searchTerm]);
+    }, [dispatch, navigate, page, searchTerm]);
 
     const browseMovies = () => {
         dispatch(moviesActions.setSearchTerm(''));

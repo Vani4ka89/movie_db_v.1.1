@@ -13,7 +13,7 @@ const MoviesList: FC = () => {
     const dispatch = useAppDispatch();
     const [query,] = useSearchParams({page: '1'});
 
-    const page = +query.get('page');
+    const page = Math.max(1, Number(query.get('page')) || 1);
 
     useEffect(() => {
         dispatch(moviesActions.getAll({page}));

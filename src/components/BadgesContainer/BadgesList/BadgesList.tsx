@@ -137,9 +137,9 @@ const BadgesList: FC = () => {
             .filter(id => draftGenreIds.includes(id));
 
         if (orderedGenreIds.length) {
-            navigate(`/movies/genre/${orderedGenreIds.join(',')}`);
+            navigate(`/movies/genre/${orderedGenreIds.join(',')}?page=1`);
         } else {
-            navigate('/movies');
+            navigate('/movies?page=1');
         }
 
         dispatch(moviesActions.setSearchTerm(''));

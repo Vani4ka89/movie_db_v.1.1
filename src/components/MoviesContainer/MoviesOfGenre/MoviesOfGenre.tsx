@@ -16,7 +16,7 @@ const MoviesOfGenre: FC = () => {
     const navigate = useNavigate();
     const [query,] = useSearchParams();
 
-    const page = +query.get('page');
+    const page = Math.max(1, Number(query.get('page')) || 1);
     const genreIds = genreId
         ?.split(',')
         .map(id => Number(id))

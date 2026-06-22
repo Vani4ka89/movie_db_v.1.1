@@ -14,7 +14,7 @@ const moviesService = {
         return apiService.get(urls.movies.discover, {params: {page, with_genres: genreId}});
     },
     getFoundMovies(searchTerm: string | number, page: number): IRes<IPagination<IMovie>> {
-        return apiService.get(urls.movies.search(searchTerm), {params: {page}});
+        return apiService.get(urls.movies.search, {params: {query: searchTerm, page}});
     },
     getVideo(movieId: number): IRes<IVideoPagination<IVideo>> {
         return apiService.get(urls.movies.video(movieId));

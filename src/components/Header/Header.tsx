@@ -18,11 +18,13 @@ const Header: FC = () => {
     const navContentId = useId();
 
     const searchMovies = (e: ChangeEvent<HTMLInputElement>) => {
-        (dispatch(moviesActions.setSearchTerm(e.target.value)));
-        if (e.target.value) {
-            navigate('/movies/search');
+        const value = e.target.value;
+
+        dispatch(moviesActions.setSearchTerm(value));
+        if (value.trim()) {
+            navigate('/movies/search?page=1', {replace: true});
         } else {
-            navigate('/movies');
+            navigate('/movies?page=1');
             window.scrollTo({top: 0, behavior: 'smooth'});
         }
     };
@@ -39,7 +41,7 @@ const Header: FC = () => {
 
     const clearSearch = () => {
         dispatch(moviesActions.setSearchTerm(''));
-        navigate('/movies');
+        navigate('/movies?page=1');
         window.scrollTo({top: 0, behavior: 'smooth'});
     };
 
@@ -55,50 +57,28 @@ const Header: FC = () => {
                     <span>Movie DB</span>
                 </NavLink>
 
-                <button
-                    className={`${css.menuButton} ${isMenuOpen ? css.menuButtonOpen : ''}`}
-                    type="button"
-                    onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    aria-expanded={isMenuOpen}
-                    aria-controls={navContentId}
-                    aria-label="Toggle navigation"
-                >
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
+                <form className={css.searchForm} role="search" onSubmit={preventSearchSubmit}>
+                    <SearchRoundedIcon className={css.searchIcon} aria-hidden="true"/>
+                    <input
+                        className={`${css.searchInput} ${searchTerm ? css.searchActive : ''}`}
+                        type="search"
+                        placeholder="Search movies"
+                        aria-label="Search movies"
+                        value={searchTerm || ''}
+                        onChange={searchMovies}/>
+                    {!!searchTerm && (
+                        <button
+                            className={css.clearSearchButton}
+                            type="button"
+                            onClick={clearSearch}
+                            aria-label="Clear search"
+                        >
+                            <CloseRoundedIcon fontSize="small"/>
+                        </button>
+                    )}
+                </form>
 
-                <div id={navContentId} className={`${css.navContent} ${isMenuOpen ? css.navContentOpen : ''}`}>
-                    <NavLink
-                        className={css.navBtn}
-                        onClick={doneScroll}
-                        aria-current="page"
-                        to={'/movies'}
-                    >
-                        Movies
-                    </NavLink>
-
-                    <form className={css.searchForm} role="search" onSubmit={preventSearchSubmit}>
-                        <SearchRoundedIcon className={css.searchIcon} aria-hidden="true"/>
-                        <input
-                            className={`${css.searchInput} ${searchTerm ? css.searchActive : ''}`}
-                            type="search"
-                            placeholder="Search movies"
-                            aria-label="Search movies"
-                            value={searchTerm || ''}
-                            onChange={searchMovies}/>
-                        {!!searchTerm && (
-                            <button
-                                className={css.clearSearchButton}
-                                type="button"
-                                onClick={clearSearch}
-                                aria-label="Clear search"
-                            >
-                                <CloseRoundedIcon fontSize="small"/>
-                            </button>
-                        )}
-                    </form>
-
+                <div className={css.headerActions}>
                     <button
                         className={`${css.themeButton} ${lightTheme ? css.themeLight : css.themeDark}`}
                         type="button"
@@ -113,6 +93,30 @@ const Header: FC = () => {
                             </span>
                         </span>
                     </button>
+
+                    <button
+                        className={`${css.menuButton} ${isMenuOpen ? css.menuButtonOpen : ''}`}
+                        type="button"
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}
+                        aria-expanded={isMenuOpen}
+                        aria-controls={navContentId}
+                        aria-label="Toggle navigation"
+                    >
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+
+                <div id={navContentId} className={`${css.navContent} ${isMenuOpen ? css.navContentOpen : ''}`}>
+                    <NavLink
+                        className={css.navBtn}
+                        onClick={doneScroll}
+                        aria-current="page"
+                        to={'/movies'}
+                    >
+                        Movies
+                    </NavLink>
                 </div>
             </nav>
         </header>
