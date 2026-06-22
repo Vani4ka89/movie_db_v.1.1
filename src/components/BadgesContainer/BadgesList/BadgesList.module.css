@@ -1,20 +1,550 @@
 .BadgesList {
     display: flex;
-    gap: 10px;
-    justify-content: center;
-    flex-wrap: wrap;
+    justify-content: flex-start;
     width: 100%;
     margin-bottom: 24px;
     padding: 4px 0 2px;
 }
 
+.filterButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 42px;
+    max-width: 100%;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0;
+    line-height: 1;
+    transition: background-color 180ms ease, border-color 180ms ease, box-shadow 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.filterButton:hover:not(:disabled) {
+    cursor: pointer;
+    transform: translateY(-1px);
+}
+
+.filterButton:focus-visible,
+.closeButton:focus-visible,
+.clearButton:focus-visible,
+.applyButton:focus-visible,
+.genreOption:focus-within {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.2);
+}
+
+.filterButton:disabled {
+    cursor: not-allowed;
+    opacity: 0.62;
+}
+
+.BadgesListLight .filterButton {
+    color: #0f766e;
+    background-color: #ffffff;
+    border: 1px solid rgba(13, 148, 136, 0.28);
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+}
+
+.BadgesListLight .filterButton:hover:not(:disabled) {
+    color: #0f172a;
+    background-color: #e6fffb;
+    border-color: rgba(13, 148, 136, 0.6);
+}
+
+.BadgesListDark .filterButton {
+    color: #fef3c7;
+    background-color: rgba(15, 23, 42, 0.92);
+    border: 1px solid rgba(45, 212, 191, 0.24);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+}
+
+.BadgesListDark .filterButton:hover:not(:disabled) {
+    color: #67e8f9;
+    background-color: rgba(13, 148, 136, 0.22);
+    border-color: rgba(251, 191, 36, 0.52);
+}
+
+.filterIcon {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3px;
+    width: 18px;
+    height: 18px;
+    flex: 0 0 auto;
+}
+
+.filterIcon span {
+    display: block;
+    height: 2px;
+    border-radius: 999px;
+    background-color: currentColor;
+}
+
+.filterIcon span:nth-child(2) {
+    width: 13px;
+}
+
+.filterIcon span:nth-child(3) {
+    width: 8px;
+}
+
+.filterButtonText {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+}
+
+.filterLabel,
+.activeFilter,
+.genreName {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.activeFilter {
+    max-width: 180px;
+    font-size: 13px;
+    font-weight: 700;
+    opacity: 0.78;
+}
+
+.badgeCount {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 26px;
+    height: 26px;
+    padding: 0 8px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 800;
+    background-color: rgba(20, 184, 166, 0.14);
+}
+
+.overlay {
+    display: none;
+}
+
+.drawer {
+    position: fixed;
+    top: 92px;
+    right: clamp(16px, 4vw, 36px);
+    z-index: 31;
+    display: flex;
+    flex-direction: column;
+    width: min(360px, calc(100vw - 32px));
+    max-height: calc(100vh - 124px);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 24px 64px rgba(15, 23, 42, 0.22);
+}
+
+.drawerLight {
+    color: #0f172a;
+    background-color: rgba(255, 255, 255, 0.98);
+    border: 1px solid rgba(148, 163, 184, 0.28);
+}
+
+.drawerDark {
+    color: #e5e7eb;
+    background-color: rgba(15, 23, 42, 0.98);
+    border: 1px solid rgba(45, 212, 191, 0.24);
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.38);
+}
+
+.drawerHeader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 18px 18px 14px;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.22);
+}
+
+.drawerTitle {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 850;
+    letter-spacing: 0;
+    line-height: 1.2;
+}
+
+.drawerSubtitle {
+    margin: 4px 0 0;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.35;
+    color: #64748b;
+}
+
+.drawerDark .drawerSubtitle {
+    color: #94a3b8;
+}
+
+.closeButton {
+    flex: 0 0 auto;
+    min-height: 36px;
+    padding: 7px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 1;
+    transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease;
+}
+
+.drawerLight .closeButton {
+    color: #0f766e;
+    background-color: #f8fafc;
+    border: 1px solid rgba(13, 148, 136, 0.26);
+}
+
+.drawerLight .closeButton:hover {
+    color: #0f172a;
+    background-color: #ccfbf1;
+    border-color: rgba(13, 148, 136, 0.54);
+    cursor: pointer;
+}
+
+.drawerDark .closeButton {
+    color: #fef3c7;
+    background-color: rgba(8, 13, 24, 0.72);
+    border: 1px solid rgba(251, 191, 36, 0.26);
+}
+
+.drawerDark .closeButton:hover {
+    color: #67e8f9;
+    background-color: rgba(20, 184, 166, 0.18);
+    border-color: rgba(45, 212, 191, 0.48);
+    cursor: pointer;
+}
+
+.selectionBar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px 18px;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+.selectionCount {
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 1.2;
+    color: #0f766e;
+}
+
+.drawerDark .selectionCount {
+    color: #fbbf24;
+}
+
+.selectedPills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.selectedPill {
+    max-width: 100%;
+    padding: 5px 8px;
+    border-radius: 999px;
+    overflow: hidden;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.drawerLight .selectedPill {
+    color: #0f766e;
+    background-color: #ccfbf1;
+    border: 1px solid rgba(13, 148, 136, 0.24);
+}
+
+.drawerDark .selectedPill {
+    color: #fef3c7;
+    background-color: rgba(251, 191, 36, 0.12);
+    border: 1px solid rgba(251, 191, 36, 0.28);
+}
+
+.genreList {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    gap: 6px;
+    min-height: 0;
+    margin: 0;
+    padding: 12px;
+    overflow-y: auto;
+    list-style: none;
+}
+
+.genreItem {
+    min-width: 0;
+}
+
+.genreOption {
+    display: flex;
+    position: relative;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    min-height: 46px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 750;
+    line-height: 1.25;
+    text-align: left;
+    transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease;
+}
+
+.checkboxInput {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    border: 0;
+    opacity: 0;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+}
+
+.drawerLight .genreOption {
+    color: #0f172a;
+    background-color: transparent;
+    border: 1px solid transparent;
+}
+
+.drawerLight .genreOption:hover {
+    color: #0f766e;
+    background-color: #ecfeff;
+    border-color: rgba(13, 148, 136, 0.24);
+    cursor: pointer;
+}
+
+.drawerDark .genreOption {
+    color: #e5e7eb;
+    background-color: transparent;
+    border: 1px solid transparent;
+}
+
+.drawerDark .genreOption:hover {
+    color: #fef3c7;
+    background-color: rgba(20, 184, 166, 0.13);
+    border-color: rgba(45, 212, 191, 0.22);
+    cursor: pointer;
+}
+
+.control {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    flex: 0 0 auto;
+    border-radius: 5px;
+    border: 2px solid currentColor;
+    opacity: 0.72;
+}
+
+.activeGenre .control {
+    opacity: 1;
+}
+
+.activeGenre .control::after {
+    content: "";
+    width: 6px;
+    height: 10px;
+    margin-top: -2px;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(45deg);
+}
+
+.drawerLight .activeGenre {
+    color: #0f766e;
+    background-color: #ccfbf1;
+    border-color: rgba(13, 148, 136, 0.42);
+}
+
+.drawerDark .activeGenre {
+    color: #0f172a;
+    background-color: #fbbf24;
+    border-color: #fbbf24;
+}
+
+.drawerFooter {
+    display: flex;
+    gap: 10px;
+    padding: 12px;
+    border-top: 1px solid rgba(148, 163, 184, 0.22);
+}
+
+.clearButton,
+.applyButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 850;
+    line-height: 1;
+    transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.clearButton {
+    flex: 0 0 auto;
+}
+
+.applyButton {
+    flex: 1 1 auto;
+}
+
+.clearButton:hover:not(:disabled),
+.applyButton:hover {
+    cursor: pointer;
+    transform: translateY(-1px);
+}
+
+.clearButton:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+}
+
+.drawerLight .clearButton {
+    color: #475569;
+    background-color: #ffffff;
+    border: 1px solid rgba(100, 116, 139, 0.24);
+}
+
+.drawerLight .clearButton:hover:not(:disabled) {
+    color: #0f172a;
+    background-color: #f1f5f9;
+    border-color: rgba(100, 116, 139, 0.4);
+}
+
+.drawerLight .applyButton {
+    color: #ffffff;
+    background-color: #0f766e;
+    border: 1px solid #0f766e;
+    box-shadow: 0 10px 22px rgba(13, 148, 136, 0.18);
+}
+
+.drawerLight .applyButton:hover {
+    background-color: #115e59;
+    border-color: #115e59;
+}
+
+.drawerDark .clearButton {
+    color: #e5e7eb;
+    background-color: rgba(8, 13, 24, 0.72);
+    border: 1px solid rgba(148, 163, 184, 0.22);
+}
+
+.drawerDark .clearButton:hover:not(:disabled) {
+    color: #fef3c7;
+    background-color: rgba(15, 23, 42, 0.96);
+    border-color: rgba(251, 191, 36, 0.32);
+}
+
+.drawerDark .applyButton {
+    color: #0f172a;
+    background-color: #fbbf24;
+    border: 1px solid #fbbf24;
+    box-shadow: 0 10px 22px rgba(251, 191, 36, 0.14);
+}
+
+.drawerDark .applyButton:hover {
+    background-color: #f59e0b;
+    border-color: #f59e0b;
+}
+
+@media (max-width: 1024px) {
+    .overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 30;
+        display: block;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        background-color: rgba(2, 6, 23, 0.56);
+        border: 0;
+    }
+
+    .drawer {
+        top: 0;
+        right: 0;
+        width: 320px;
+        max-width: 100%;
+        height: 100dvh;
+        max-height: none;
+        border-radius: 8px 0 0 8px;
+    }
+}
+
 @media (max-width: 640px) {
     .BadgesList {
-        justify-content: flex-start;
-        flex-wrap: nowrap;
         margin-bottom: 18px;
-        padding: 2px 2px 10px;
-        overflow-x: auto;
-        scrollbar-width: thin;
+        padding: 2px 0 8px;
+    }
+
+    .filterButton {
+        width: 100%;
+        justify-content: space-between;
+        min-height: 44px;
+        padding: 9px 12px;
+    }
+
+    .filterButtonText {
+        flex: 1 1 auto;
+    }
+
+    .activeFilter {
+        max-width: 48vw;
+    }
+
+    .drawer {
+        top: auto;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: min(86dvh, 620px);
+        max-height: 90dvh;
+        border-radius: 8px 8px 0 0;
+    }
+
+    .drawerHeader {
+        padding: 16px 14px 12px;
+    }
+
+    .selectionBar {
+        padding: 10px 14px;
+    }
+
+    .genreList {
+        padding: 10px;
+    }
+
+    .genreOption {
+        min-height: 48px;
+        padding: 11px 12px;
+    }
+
+    .drawerFooter {
+        padding: 10px;
     }
 }

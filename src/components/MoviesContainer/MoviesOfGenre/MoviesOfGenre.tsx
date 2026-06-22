@@ -14,10 +14,17 @@ const MoviesOfGenre: FC = () => {
     const [query,] = useSearchParams();
 
     const page = +query.get('page');
+    const genreIds = genreId
+        ?.split(',')
+        .map(id => Number(id))
+        .filter(id => Number.isFinite(id) && id > 0)
+        .join(',');
 
     useEffect(() => {
-        dispatch(moviesActions.getOfGenre({genreId: +genreId, page}));
-    }, [page, dispatch, genreId]);
+        if (genreIds) {
+            dispatch(moviesActions.getOfGenre({genreId: genreIds, page}));
+        }
+    }, [page, dispatch, genreIds]);
 
     return (
         <div className={css.MoviesOfGenre}>

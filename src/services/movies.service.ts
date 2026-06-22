@@ -10,8 +10,8 @@ const moviesService = {
     getById(movieId: number): IRes<IMovie> {
         return apiService.get(urls.movies.byId(movieId));
     },
-    getMoviesOfGenre(genreId: number, page: number): IRes<IPagination<IMovie>> {
-        return apiService.get(urls.genres.moviesOfGenre(genreId), {params: {page}});
+    getMoviesOfGenre(genreId: string | number, page: number): IRes<IPagination<IMovie>> {
+        return apiService.get(urls.movies.discover, {params: {page, with_genres: genreId}});
     },
     getFoundMovies(searchTerm: string | number, page: number): IRes<IPagination<IMovie>> {
         return apiService.get(urls.movies.search(searchTerm), {params: {page}});

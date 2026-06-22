@@ -48,7 +48,7 @@ const getById = createAsyncThunk<IMovie, { movieId: number }>(
     }
 );
 
-const getOfGenre = createAsyncThunk<IPagination<IMovie>, { genreId: number, page: number }>(
+const getOfGenre = createAsyncThunk<IPagination<IMovie>, { genreId: string | number, page: number }>(
     'moviesSlice/getOfGenre',
     async ({genreId, page}, {rejectWithValue}) => {
         try {
